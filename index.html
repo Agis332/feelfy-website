@@ -97,13 +97,13 @@ input::placeholder{color:#9b9a95}
 
         <sc-for list="{{ phones }}" as="p" hint-placeholder-count="6">
           <div data-idx="{{ p.idx }}" style="position:absolute;inset:0;transform-style:preserve-3d;transform:{{ p.tf }};opacity:{{ p.op }};pointer-events:{{ p.pe }}">
-            <div style="position:absolute;inset:0;border-radius:50px;background:linear-gradient(150deg,#3a3d44,#14161a 46%,#25282e);border:1px solid rgba(255,255,255,.22);box-shadow:0 44px 90px rgba(4,26,62,.46),inset 0 1px 0 rgba(255,255,255,.35);transform:translateZ(-14px)"></div>
+            <div style="position:absolute;inset:0;border-radius:50px;background:linear-gradient(150deg,#3a3d44,#14161a 46%,#25282e);border:1px solid rgba(255,255,255,.22);box-shadow:0 44px 90px rgba(4,26,62,.46),inset 0 1px 0 rgba(255,255,255,.35)"></div>
             <div style="position:absolute;inset:{{ screenInset }};border-radius:40px;overflow:hidden;background:{{ p.screenBg }};box-shadow:inset 0 0 0 1.5px #0a0b0e">
               <div style="position:absolute;top:0;left:0;width:200%;height:200%;transform:scale(.5);transform-origin:top left">
                 <image-slot id="{{ p.slot }}" shape="rect" fit="cover" src="{{ p.src }}" placeholder="{{ p.label }}" style="width:100%;height:100%"></image-slot>
               </div>
             </div>
-            <div style="position:absolute;inset:{{ screenInset }};border-radius:40px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,0) 42%);opacity:.65;transform:translateZ(3px)"></div>
+            <div style="position:absolute;inset:{{ screenInset }};border-radius:40px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,0) 42%);opacity:.65"></div>
           </div>
         </sc-for>
 
