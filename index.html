@@ -104,8 +104,8 @@ input::placeholder{color:#9b9a95}
       <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;color:#fff;margin-bottom:7px">{{ activeTitle }}</div>
       <div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88);text-wrap:pretty">{{ activeDesc }}</div>
     </div>
-    <button type="button" onClick="{{ prev }}" aria-label="Ankstesnis ekranas" style="position:absolute;top:50%;left:{{ prevPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:{{ navBtnSize }};height:{{ navBtnSize }};border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">‹</button>
-    <button type="button" onClick="{{ next }}" aria-label="Kitas ekranas" style="position:absolute;top:50%;right:{{ nextPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:{{ navBtnSize }};height:{{ navBtnSize }};border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">›</button>
+    <button type="button" onClick="{{ prev }}" aria-label="Ankstesnis ekranas" style="position:absolute;top:50%;left:{{ prevPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:{{ navBtnSize }};height:{{ navBtnSize }};border-radius:99px;border:1px solid {{ navBtnBorder }};background:{{ navBtnBg }};color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">‹</button>
+    <button type="button" onClick="{{ next }}" aria-label="Kitas ekranas" style="position:absolute;top:50%;right:{{ nextPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:{{ navBtnSize }};height:{{ navBtnSize }};border-radius:99px;border:1px solid {{ navBtnBorder }};background:{{ navBtnBg }};color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">›</button>
   </div>
 </div>
 
@@ -390,7 +390,9 @@ class Component extends DCLogic {
       prevPos: narrow ? '-30px' : '-104px',
       nextPos: narrow ? '-30px' : '-104px',
       screenInset: narrow ? '9px' : '13px',
-      navBtnSize: narrow ? '28px' : '42px',
+      navBtnSize: narrow ? '32px' : '42px',
+      navBtnBg: narrow ? 'rgba(6,36,84,.16)' : 'rgba(6,36,84,.28)',
+      navBtnBorder: narrow ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.5)',
       phones: phones,
       activeTitle: (shots[i % shots.length] || [])[1] || '',
       activeDesc: (shots[i % shots.length] || [])[2] || '',
@@ -406,10 +408,7 @@ class Component extends DCLogic {
       stageRef: this.stageRef,
       phoneRef: this.phoneRef,
       glareRef: this.glareRef,
-      onDown: (e) => {
-        if (this.state.narrow) { this.swipeStart = { x: e.clientX, y: e.clientY }; return; }
-        this.drag = { x: e.clientX, y: e.clientY };
-      },
+      onDown: (e) => { if (this.state.narrow) return; this.drag = { x: e.clientX, y: e.clientY }; },
       onMove: (e) => {
         if (this.state.narrow) return;
         if (!this.drag) return;
@@ -418,21 +417,7 @@ class Component extends DCLogic {
         this.target.y = Math.max(-max, Math.min(max, dx * 0.12));
         this.target.x = Math.max(-max * 0.7, Math.min(max * 0.7, -dy * 0.08));
       },
-      onUp: (e) => {
-        if (this.state.narrow) {
-          if (this.swipeStart && e) {
-            const dx = e.clientX - this.swipeStart.x;
-            const dy = e.clientY - this.swipeStart.y;
-            if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-              this.go(dx < 0 ? 1 : -1);
-            }
-          }
-          this.swipeStart = null;
-          return;
-        }
-        this.drag = null;
-        this.target = { ...this.rest };
-      }
+      onUp: () => { this.drag = null; this.target = { ...this.rest }; }
     };
   }
 }
