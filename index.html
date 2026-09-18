@@ -47,36 +47,36 @@ input::placeholder{color:#9b9a95}
 
     <div style="padding:{{ formPad }};border-radius:22px;max-width:820px;background:#f3f2ee;border:1px solid #e5e3dd;box-shadow:0 1px 0 rgba(255,255,255,.7) inset;margin-bottom:18px">
       <div style="display:flex;flex-direction:{{ regDir }};flex-wrap:wrap;align-items:{{ regAlign }};gap:{{ regGap }};margin-bottom:18px">
-        <span style="font-weight:700;font-size:15px;color:#111">Registruojuosi kaip</span>
+        <span style="font-weight:700;font-size:15px;color:#111">{{ regLabel }}</span>
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px {{ regRadioGap }}">
-          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleClient }}" onChange="{{ onRoleClient }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Klientas</label>
-          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleTrainer }}" onChange="{{ onRoleTrainer }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Treneris</label>
-          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleBoth }}" onChange="{{ onRoleBoth }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Abu</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleClient }}" onChange="{{ onRoleClient }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">{{ roleClientLabel }}</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleTrainer }}" onChange="{{ onRoleTrainer }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">{{ roleTrainerLabel }}</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleBoth }}" onChange="{{ onRoleBoth }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">{{ roleBothLabel }}</label>
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px">
-        <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="vardas@pastas.com" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
+        <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="{{ emailPlaceholder }}" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px">
-        <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="Vardas (nebūtina)" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
-        <input value="{{ cityVal }}" onChange="{{ onCity }}" placeholder="Miestas (nebūtina)" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+        <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="{{ namePlaceholder }}" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+        <input value="{{ cityVal }}" onChange="{{ onCity }}" placeholder="{{ cityPlaceholder }}" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
       </div>
       <div style="display:flex;margin-bottom:18px">
         <button type="button" onClick="{{ onSubmit }}" style="font-family:Archivo,sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;padding:17px 34px;flex:1 1 auto;border:0;border-radius:14px;background:{{ btnBg }};color:#fff;cursor:pointer;transition:background .18s" style-hover="background:{{ btnBgHover }}">{{ btnLabel }}</button>
       </div>
 
-      <p style="font-size:14px;line-height:1.5;color:#7a7974;margin:0;white-space:{{ consentWrap }}">Gausi Feelfy naujienas apie paleidimą ir programėlės atnaujinimo informaciją.</p>
+      <p style="font-size:14px;line-height:1.5;color:#7a7974;margin:0;white-space:{{ consentWrap }}">{{ consentText }}</p>
       <p style="display:{{ errorShown }};font-size:14px;line-height:1.5;color:#d64545;margin:10px 0 0">{{ errorText }}</p>
 
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:{{ badgeAlign }}">
-      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">App Store</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">netrukus</span></div>
-      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">Google Play</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">netrukus</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">App Store</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">{{ comingSoonLabel }}</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">Google Play</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">{{ comingSoonLabel }}</span></div>
     </div>
   </div>
 
-  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, Lietuva · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
+  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, {{ footerCountry }} · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
 </div>
 
 <div ref="{{ stageRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerLeave="{{ onUp }}" style="order:3;flex:1 1 380px;min-height:{{ stageMinH }};position:relative;overflow:hidden;background:#1b7cf6;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.075) 0 2px,transparent 2px 13px);display:flex;align-items:center;justify-content:center;padding:{{ stagePad }};touch-action:pan-y;cursor:grab">
@@ -300,6 +300,18 @@ class Component extends DCLogic {
       modeTrainerLabel: this.state.lang === 'en' ? 'Trainer' : 'Treneris',
       prevLabel: this.state.lang === 'en' ? 'Previous screen' : 'Ankstesnis ekranas',
       nextLabel: this.state.lang === 'en' ? 'Next screen' : 'Kitas ekranas',
+      regLabel: this.state.lang === 'en' ? 'Signing up as' : 'Registruojuosi kaip',
+      roleClientLabel: this.state.lang === 'en' ? 'Client' : 'Klientas',
+      roleTrainerLabel: this.state.lang === 'en' ? 'Trainer' : 'Treneris',
+      roleBothLabel: this.state.lang === 'en' ? 'Both' : 'Abu',
+      emailPlaceholder: this.state.lang === 'en' ? 'name@example.com' : 'vardas@pastas.com',
+      namePlaceholder: this.state.lang === 'en' ? 'Name (optional)' : 'Vardas (nebūtina)',
+      cityPlaceholder: this.state.lang === 'en' ? 'City (optional)' : 'Miestas (nebūtina)',
+      consentText: this.state.lang === 'en'
+        ? "You'll get Feelfy news about the launch and app updates."
+        : 'Gausi Feelfy naujienas apie paleidimą ir programėlės atnaujinimo informaciją.',
+      comingSoonLabel: this.state.lang === 'en' ? 'coming soon' : 'netrukus',
+      footerCountry: this.state.lang === 'en' ? 'Lithuania' : 'Lietuva',
       pClose: this.state.lang === 'en' ? 'Close' : 'Uždaryti',
       pTitle: this.state.lang === 'en' ? 'Privacy Policy (Waitlist)' : 'Privatumo politika (laukimo sąrašas)',
       pUpdated: this.state.lang === 'en' ? 'Last updated: September 2026' : 'Paskutinį kartą atnaujinta: 2026 m. rugsėjis',
@@ -333,7 +345,9 @@ class Component extends DCLogic {
       pP5: this.state.lang === 'en'
         ? 'Feelfy, MB (company code 308099126), Vilnius, Lithuania. Contact: support@feelfy.app'
         : 'Feelfy, MB (įmonės kodas 308099126), Vilnius, Lietuva. Klausimais kreipkitės: support@feelfy.app',
-      btnLabel: this.state.sent ? 'Ačiū, pranešime apie programėlės naujienas' : 'Registruotis',
+      btnLabel: this.state.sent
+        ? (this.state.lang === 'en' ? "Thanks, we'll notify you about app news" : 'Ačiū, pranešime apie programėlės naujienas')
+        : (this.state.lang === 'en' ? 'Sign up' : 'Registruotis'),
       btnBg: '#1b7cf6',
       btnBgHover: this.state.sent ? '#1b7cf6' : '#0f63d4',
       onEmail: (e) => this.setState({ email: e.target.value }),
