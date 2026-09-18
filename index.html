@@ -89,7 +89,7 @@ input::placeholder{color:#9b9a95}
       <div ref="{{ ringRef }}" style="position:absolute;inset:0;transform-style:preserve-3d;will-change:transform">
 
         <sc-for list="{{ phones }}" as="p" hint-placeholder-count="6">
-          <div data-idx="{{ p.idx }}" style="position:absolute;inset:0;transform-style:preserve-3d">
+          <div data-idx="{{ p.idx }}" style="position:absolute;inset:0;transform-style:preserve-3d;transform:{{ p.tf }};opacity:{{ p.op }};pointer-events:{{ p.pe }}">
             <div style="position:absolute;inset:0;border-radius:50px;background:linear-gradient(150deg,#3a3d44,#14161a 46%,#25282e);border:1px solid rgba(255,255,255,.22);box-shadow:0 44px 90px rgba(4,26,62,.46),inset 0 1px 0 rgba(255,255,255,.35);transform:translateZ(-14px)"></div>
             <div style="position:absolute;inset:{{ screenInset }};border-radius:40px;overflow:hidden;background:{{ p.screenBg }};box-shadow:inset 0 0 0 1.5px #0a0b0e">
               <div style="position:absolute;top:0;left:0;width:200%;height:200%;transform:scale(.5);transform-origin:top left">
@@ -229,6 +229,8 @@ class Component extends DCLogic {
     const max = this.props.tiltStrength ?? 16;
     const i = this.state.shot;
     const n = this.count();
+    const rx = this.rx();
+    const rz = this.rz();
     const trainerMode = this.state.mode === 'trainer';
     const shots = trainerMode ? [
       ['uploads/Screenshot_20260917_143007_Feelfy.jpg', { lt: 'Trenerio pradinis ekranas', en: 'Trainer home screen' }, { lt: 'Dienos apžvalga: sesijos, uždarbis, reitingas ir greiti veiksmai.', en: 'Day overview: sessions, earnings, rating and quick actions.' }],
@@ -247,13 +249,19 @@ class Component extends DCLogic {
     ];
     const phones = [];
     for (let k = 0; k < n; k++) {
+      const a = k * 2 * Math.PI / n;
+      const x = rx * Math.sin(a);
+      const z = rz * (Math.cos(a) - 1);
       phones.push({
         slot: (trainerMode ? 'feelfy-trainer-shot-' : 'feelfy-app-shot-v2-') + (k + 1),
         src: (shots[k % shots.length] || [])[0] || '',
         screenBg: (shots[k % shots.length] || [])[0] ? '#0c0d10' : '#f3f2ee',
         label: ((shots[k % shots.length] || [])[1] || {})[this.state.lang] || ('Ekranas ' + (k + 1)),
         desc: ((shots[k % shots.length] || [])[2] || {})[this.state.lang] || '',
-        idx: k
+        idx: k,
+        tf: 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + (k * 360 / n).toFixed(2) + 'deg)',
+        op: k === i ? 1 : 0.4,
+        pe: k === i ? 'auto' : 'none'
       });
     }
     const narrow = this.state.narrow;
