@@ -162,7 +162,7 @@ class Component extends DCLogic {
     this.ringRef = React.createRef();
     this.turns = 0;
     this.pos = 0;
-    this.state = { shot: 0, email: '', name: '', city: '', role: 'client', sent: false, lang: 'lt', policy: false, error: false, mode: 'athlete', narrow: typeof window !== 'undefined' && window.innerWidth < 1080 };
+    this.state = { shot: 0, email: '', name: '', city: '', role: 'client', sent: false, lang: 'en', policy: false, error: false, mode: 'athlete', narrow: typeof window !== 'undefined' && window.innerWidth < 1080 };
   }
   count() { return Math.max(2, Math.round(this.props.phoneCount ?? 6)); }
   rx() { return this.state.narrow ? 380 : 430; }
