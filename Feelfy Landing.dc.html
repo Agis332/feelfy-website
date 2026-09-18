@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Mulish:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><script src="./image-slot.js"></script><style>
+body{margin:0;background:#fefdfa;font-family:Mulish,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1b7cf6;text-decoration:none}a:hover{color:#0f5ec6}
+input{font-family:inherit}
+input::placeholder{color:#9b9a95}
+
+</style></helmet>
+<div style="position:relative;display:flex;flex-wrap:{{ rootWrap }};flex-direction:{{ rootDir }};min-height:100vh;max-width:100%;overflow-x:hidden;background:#fefdfa;color:#111">
+
+<div style="flex:1.35 1 460px;position:relative;display:{{ leftDisplay }};flex-direction:column;padding:{{ leftPad }};gap:0;background-color:#fefdfa;overflow:hidden;background-image:radial-gradient(760px 560px at 84% 82%,rgba(27,124,246,.09),rgba(27,124,246,.028) 52%,transparent 74%),radial-gradient(560px 460px at 4% 6%,rgba(17,17,17,.045),transparent 70%)">
+  <div style="display:{{ edgeDisplay }};position:absolute;left:6px;top:52%;transform:translateY(-50%);writing-mode:vertical-rl;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;color:rgba(17,17,17,.3);pointer-events:none">AGIS · FEELFY · VILNIUS · 2026</div>
+  <div style="order:1;padding:{{ childPad }};display:flex;align-items:center;justify-content:space-between;gap:24px;margin:{{ headerMargin }}">
+    <img src="uploads/darkimage.png" alt="Feelfy" style="height:72px;width:auto;display:block">
+    <div style="display:flex;align-self:flex-start;padding:3px;background:#f1f0ec;border-radius:9px;gap:2px">
+      <button type="button" onClick="{{ setLt }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:0.04em;padding:6px 12px;border:0;border-radius:7px;background:{{ ltBg }};color:{{ ltFg }};cursor:pointer">LT</button>
+      <button type="button" onClick="{{ setEn }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:0.04em;padding:6px 12px;border:0;border-radius:7px;background:{{ enBg }};color:{{ enFg }};cursor:pointer">EN</button>
+    </div>
+  </div>
+
+  <div style="order:2;padding:{{ childPad }};display:flex;flex-direction:column;justify-content:center;max-width:840px">
+    <div style="font-family:Archivo,sans-serif;font-weight:600;font-size:clamp(13px,.95vw,15px);letter-spacing:0.17em;color:#1b7cf6;margin-bottom:{{ eyebrowGap }}">PROGRAMĖLĖS STARTAS NETRUKUS</div>
+    <div style="position:relative">
+    <h1 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(40px,4.4vw,76px);line-height:1.02;letter-spacing:-0.04em;margin:0 0 {{ h1Gap }};text-wrap:pretty">Rask ir rezervuok <span style="color:#1b7cf6">savo sporto trenerį.</span></h1>
+    </div>
+  </div>
+
+  <div style="order:4;padding:{{ childPad }};display:flex;flex-direction:column;justify-content:center;max-width:840px">
+    <p style="font-size:clamp(18px,1.3vw,22px);line-height:1.55;color:#55544f;margin:{{ copyTop }} 0 {{ copyGap }};max-width:720px;text-wrap:pretty">Vienoje programėlėje atrask savo sporto trenerį: išsirink pagal savo sporto šaką ir miestą, matyk kainas, sesijų trukmes ir specializacijas, rinkis laisvą laiką iš realaus tvarkaraščio ir rezervuok su apmokėjimu telefone.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 {{ tagsGap }};max-width:700px">
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Patogu rezervuoti treniruotę</span>
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Nėra mėnesinio mokesčio</span>
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Apmokėjimas telefone</span>
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Kvalifikacijos patikra</span>
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Pokalbiai programėlėje</span>
+      <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Patogus sporto šakos ir trenerio pasirinkimas</span>
+    </div>
+
+    <div style="padding:{{ formPad }};border-radius:22px;max-width:820px;background:#f3f2ee;border:1px solid #e5e3dd;box-shadow:0 1px 0 rgba(255,255,255,.7) inset;margin-bottom:18px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-bottom:18px">
+        <span style="font-weight:700;font-size:15px;color:#111">Registruojuosi kaip</span>
+        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleClient }}" onChange="{{ onRoleClient }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Klientas</label>
+        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleTrainer }}" onChange="{{ onRoleTrainer }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Treneris</label>
+        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleBoth }}" onChange="{{ onRoleBoth }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Abu</label>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px">
+        <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="vardas@pastas.com" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+        <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="Vardas (nebūtina)" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+        <input value="{{ cityVal }}" onChange="{{ onCity }}" placeholder="Miestas (nebūtina)" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+      </div>
+      <div style="display:flex;margin-bottom:18px">
+        <button type="button" onClick="{{ onSubmit }}" style="font-family:Archivo,sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;padding:17px 34px;flex:1 1 auto;border:0;border-radius:14px;background:{{ btnBg }};color:#fff;cursor:pointer;transition:background .18s" style-hover="background:{{ btnBgHover }}">{{ btnLabel }}</button>
+      </div>
+
+      <p style="font-size:14px;line-height:1.5;color:#7a7974;margin:0;white-space:{{ consentWrap }}">Gausi Feelfy naujienas apie paleidimą ir programėlės atnaujinimo informaciją.</p>
+      <p style="display:{{ errorShown }};font-size:14px;line-height:1.5;color:#d64545;margin:10px 0 0">{{ errorText }}</p>
+
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:{{ badgeAlign }}">
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">App Store</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">netrukus</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:16px 22px;border:1px dashed #cfcec8;border-radius:14px"><span style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;color:#2a2925">Google Play</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6d6c67;background:#f1f0ec;padding:5px 9px;border-radius:7px">netrukus</span></div>
+    </div>
+  </div>
+
+  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, Lietuva · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
+</div>
+
+<div ref="{{ stageRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerLeave="{{ onUp }}" style="order:3;flex:1 1 380px;min-height:{{ stageMinH }};position:relative;overflow:hidden;background:#1b7cf6;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.075) 0 2px,transparent 2px 13px);display:flex;align-items:center;justify-content:center;padding:{{ stagePad }};touch-action:pan-y;cursor:grab">
+  <div style="position:absolute;top:24px;right:24px;z-index:5;display:flex;padding:3px;gap:2px;border-radius:10px;background:rgba(6,36,84,.28);border:1px solid rgba(255,255,255,.34)">
+    <button type="button" onClick="{{ setAthlete }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em;padding:6px 11px;border:0;border-radius:7px;cursor:pointer;background:{{ bgA }};color:{{ fgA }}">Sportininkas</button>
+    <button type="button" onClick="{{ setTrainer }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em;padding:6px 11px;border:0;border-radius:7px;cursor:pointer;background:{{ bgT }};color:{{ fgT }}">Treneris</button>
+  </div>
+  <div style="position:relative;perspective:1500px;perspective-origin:50% 50%">
+    <div ref="{{ phoneRef }}" style="position:relative;width:342px;height:698px;transform-style:preserve-3d;will-change:transform;transform:rotateY(0deg) rotateX(0deg)">
+      <div ref="{{ ringRef }}" style="position:absolute;inset:0;transform-style:preserve-3d;will-change:transform">
+
+        <sc-for list="{{ phones }}" as="p" hint-placeholder-count="6">
+          <div data-idx="{{ p.idx }}" style="position:absolute;inset:0;transform-style:preserve-3d;transform:{{ p.tf }};opacity:{{ p.op }};pointer-events:{{ p.pe }}">
+            <div style="position:absolute;inset:0;border-radius:50px;background:linear-gradient(150deg,#3a3d44,#14161a 46%,#25282e);border:1px solid rgba(255,255,255,.22);box-shadow:0 44px 90px rgba(4,26,62,.46),inset 0 1px 0 rgba(255,255,255,.35);transform:translateZ(-14px)"></div>
+            <div style="position:absolute;inset:13px;border-radius:40px;overflow:hidden;background:{{ p.screenBg }};box-shadow:inset 0 0 0 1.5px #0a0b0e">
+              <div style="position:absolute;top:0;left:0;width:200%;height:200%;transform:scale(.5);transform-origin:top left">
+                <image-slot id="{{ p.slot }}" shape="rect" fit="cover" src="{{ p.src }}" placeholder="{{ p.label }}" style="width:100%;height:100%"></image-slot>
+              </div>
+            </div>
+            <div style="position:absolute;inset:13px;border-radius:40px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.42) 0%,rgba(255,255,255,0) 42%);opacity:.65;transform:translateZ(3px)"></div>
+          </div>
+        </sc-for>
+
+      </div>
+    </div>
+    <div style="position:absolute;left:50%;bottom:{{ capBottom }};transform:translateX(-50%);width:min(420px,84vw);text-align:center;pointer-events:none">
+      <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;color:#fff;margin-bottom:7px">{{ activeTitle }}</div>
+      <div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88);text-wrap:pretty">{{ activeDesc }}</div>
+    </div>
+    <button type="button" onClick="{{ prev }}" aria-label="Ankstesnis ekranas" style="position:absolute;top:50%;left:-104px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">‹</button>
+    <button type="button" onClick="{{ next }}" aria-label="Kitas ekranas" style="position:absolute;top:50%;right:-104px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">›</button>
+  </div>
+</div>
+
+</div>
+<div style="display:{{ policyShown }};position:fixed;inset:0;z-index:40;align-items:flex-start;justify-content:center;padding:clamp(16px,4vh,56px) 16px;background:rgba(10,14,22,.62)">
+  <div onClick="{{ closePolicy }}" style="position:absolute;inset:0"></div>
+  <div style="position:relative;width:100%;max-width:720px;max-height:100%;overflow:auto;border-radius:22px;background:#15181f;color:#e9e7e2;box-shadow:0 40px 100px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)">
+    <div style="position:sticky;top:0;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:30px 32px 18px;background:#15181f;border-bottom:1px solid rgba(255,255,255,.09)">
+      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);line-height:1.15;letter-spacing:-0.02em;margin:0;color:#fff">{{ pTitle }}</h2>
+      <button type="button" onClick="{{ closePolicy }}" style="flex:0 0 auto;font-family:Archivo,sans-serif;font-weight:600;font-size:14px;padding:9px 15px;border:1px solid rgba(255,255,255,.28);border-radius:10px;background:transparent;color:#fff;cursor:pointer" style-hover="background:rgba(255,255,255,.12)">{{ pClose }}</button>
+    </div>
+    <div style="padding:22px 32px 34px;display:flex;flex-direction:column;gap:20px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:#9aa0ac">{{ pUpdated }}</div>
+      <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pIntro }}</p>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH1 }}</h3>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP1 }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH2 }}</h3>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2 }}</p>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2a }}</p>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2b }}</p>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:8px 0 0;text-wrap:pretty">{{ pP2c }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH3 }}</h3>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP3 }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH4 }}</h3>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP4 }}</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH5 }}</h3>
+        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP5 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;phoneCount&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:8,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;},&quot;tiltStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:16,&quot;min&quot;:4,&quot;max&quot;:30,&quot;step&quot;:1,&quot;unit&quot;:&quot;°&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.stageRef = React.createRef();
+    this.phoneRef = React.createRef();
+    this.glareRef = React.createRef();
+    this.rest = { x: 0, y: 0 };
+    this.cur = { ...this.rest };
+    this.target = { ...this.rest };
+    this.ringRef = React.createRef();
+    this.turns = 0;
+    this.pos = 0;
+    this.state = { shot: 0, email: '', name: '', city: '', role: 'client', sent: false, lang: 'lt', policy: false, error: false, mode: 'athlete', narrow: typeof window !== 'undefined' && window.innerWidth < 1080 };
+  }
+  count() { return Math.max(2, Math.round(this.props.phoneCount ?? 6)); }
+  rx() { return 430; }
+  rz() { return Math.max(900, 300 * this.count()); }
+  go(d) {
+    const n = this.count();
+    this.turns += d;
+    this.setState({ shot: ((this.turns % n) + n) % n });
+  }
+  componentDidMount() {
+    const tick = () => {
+      const k = 0.09;
+      this.cur.x += (this.target.x - this.cur.x) * k;
+      this.cur.y += (this.target.y - this.cur.y) * k;
+      const el = this.phoneRef.current;
+      if (el) el.style.transform = `rotateY(${this.cur.y.toFixed(2)}deg) rotateX(${this.cur.x.toFixed(2)}deg)`;
+      this.pos += (this.turns - this.pos) * 0.08;
+      const ring = this.ringRef.current;
+      if (ring) {
+        const n = this.count(), rx = this.rx(), rz = this.rz();
+        for (const el of ring.children) {
+          const k = Number(el.getAttribute('data-idx'));
+          if (Number.isNaN(k)) continue;
+          const a = (k - this.pos) * 2 * Math.PI / n;
+          const x = rx * Math.sin(a);
+          const z = rz * (Math.cos(a) - 1);
+          const front = (1 + Math.cos(a)) / 2;
+          el.style.transform = `translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${(a * 180 / Math.PI).toFixed(2)}deg)`;
+          const vis = front > 0.45;
+          el.style.opacity = vis ? (0.28 + 0.72 * Math.pow(front, 3)).toFixed(3) : '0';
+          el.style.visibility = vis ? 'visible' : 'hidden';
+          el.style.zIndex = String(Math.round(front * 100));
+          el.style.pointerEvents = front > 0.995 ? 'auto' : 'none';
+        }
+      }
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('orientationchange', this.onResize);
+    setTimeout(this.onResize, 60);
+    const stage0 = this.stageRef.current;
+    if (stage0 && stage0.parentElement && typeof ResizeObserver !== 'undefined') {
+      this.ro = new ResizeObserver(this.onResize);
+      this.ro.observe(stage0.parentElement);
+    }
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('orientationchange', this.onResize);
+    if (this.ro) this.ro.disconnect();
+  }
+  onResize = () => {
+    const stage = this.stageRef.current;
+    const left = stage && stage.parentElement ? stage.parentElement.firstElementChild : null;
+    let narrow = window.innerWidth < 1080;
+    if (stage && left && left !== stage && getComputedStyle(left).display !== 'contents') {
+      narrow = Math.abs(left.getBoundingClientRect().top - stage.getBoundingClientRect().top) > 4;
+    }
+    if (narrow !== this.state.narrow) this.setState({ narrow: narrow });
+  };
+  renderVals() {
+    const max = this.props.tiltStrength ?? 16;
+    const i = this.state.shot;
+    const n = this.count();
+    const rx = this.rx();
+    const rz = this.rz();
+    const trainerMode = this.state.mode === 'trainer';
+    const shots = trainerMode ? [
+      ['uploads/Screenshot_20260917_143007_Feelfy.jpg', 'Trenerio pradinis ekranas', 'Dienos apžvalga: sesijos, uždarbis, reitingas ir greiti veiksmai.'],
+      ['uploads/Screenshot_20260916_151113_Feelfy.jpg', 'Uždarbis', 'Išmokoms paruošta suma, mėnesių istorija ir operacijų sąrašas.'],
+      ['uploads/Screenshot_20260916_151235_Feelfy.jpg', 'Atsiliepimai', 'Bendras reitingas, vertinimų skirstymas ir atsakymai klientams.'],
+      ['uploads/Screenshot_20260916_145647_Feelfy.jpg', 'Sesijos', 'Naujos, būsimos ir įvykusios treniruotės su klientų informacija.'],
+      ['uploads/Screenshot_20260916_145728_Feelfy.jpg', 'Kalendorius', 'Mėnesio vaizdas su pažymėtomis dienomis ir dienos tvarkaraščiu.'],
+      ['uploads/Screenshot_20260916_150725_Feelfy.jpg', 'Pranešimai', 'Rezervacijos užklausos, žinutės, atšaukimai ir nauji atsiliepimai.']
+    ] : [
+      ['uploads/Screenshot_20260917_133413_Feelfy.jpg', 'Trenerio profilis', 'Gali matyti trenerio informaciją ir užsiregistruoti sesijai.'],
+      ['uploads/Screenshot_20260917_140412_Feelfy.jpg', 'Trenerių paieška', 'Filtruoji pagal sporto šaką, miestą ir kainą.'],
+      ['uploads/Screenshot_20260917_133047_Feelfy.jpg', 'Žemėlapis', 'Matai, kurie treneriai dirba netoli tavęs.'],
+      ['uploads/Screenshot_20260916_115912_Feelfy.jpg', 'Susirašinėjimas', 'Susitari dėl detalių su treneriu programėlėje.'],
+      ['uploads/Screenshot_20260916_120619_Feelfy.jpg', 'Rezervacijos', 'Visos tavo rezervacijos ir jų statusai vienoje vietoje.'],
+      ['uploads/Screenshot_20260916_121156_Feelfy.jpg', 'Kalendorius', 'Pasirenki laisvą laiką iš realaus trenerio tvarkaraščio.']
+    ];
+    const phones = [];
+    for (let k = 0; k < n; k++) {
+      const a = k * 2 * Math.PI / n;
+      const x = rx * Math.sin(a);
+      const z = rz * (Math.cos(a) - 1);
+      phones.push({
+        slot: (trainerMode ? 'feelfy-trainer-shot-' : 'feelfy-app-shot-v2-') + (k + 1),
+        src: (shots[k % shots.length] || [])[0] || '',
+        screenBg: (shots[k % shots.length] || [])[0] ? '#0c0d10' : '#f3f2ee',
+        label: (shots[k % shots.length] || [])[1] || ('Ekranas ' + (k + 1)),
+        desc: (shots[k % shots.length] || [])[2] || '',
+        idx: k,
+        tf: 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + (k * 360 / n).toFixed(2) + 'deg)',
+        op: k === i ? 1 : 0.4,
+        pe: k === i ? 'auto' : 'none'
+      });
+    }
+    const narrow = this.state.narrow;
+    return {
+      leftDisplay: narrow ? 'contents' : 'flex',
+      leftPad: narrow ? '0' : 'clamp(20px,2.4vw,32px) clamp(22px,4vw,56px) 22px clamp(22px,4vw,70px)',
+      childPad: narrow ? '0 clamp(18px,5vw,26px)' : '0',
+      headerMargin: narrow ? '26px 0 6px -10px' : '-14px 0 0 -30px',
+      copyTop: narrow ? '28px' : '0',
+      btnFlex: narrow ? '1 1 100%' : '0 0 auto',
+      consentWrap: narrow ? 'normal' : 'nowrap',
+      email: this.state.email,
+      ltBg: this.state.lang === 'lt' ? '#111' : 'transparent',
+      ltFg: this.state.lang === 'lt' ? '#fff' : '#6d6c67',
+      enBg: this.state.lang === 'en' ? '#111' : 'transparent',
+      enFg: this.state.lang === 'en' ? '#fff' : '#6d6c67',
+      setLt: () => this.setState({ lang: 'lt' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      policyShown: this.state.policy ? 'flex' : 'none',
+      openPolicy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ policy: true }); },
+      closePolicy: () => this.setState({ policy: false }),
+      policyLinkLabel: this.state.lang === 'en' ? 'Privacy Policy' : 'Privatumo politika',
+      pClose: this.state.lang === 'en' ? 'Close' : 'Uždaryti',
+      pTitle: this.state.lang === 'en' ? 'Privacy Policy (Waitlist)' : 'Privatumo politika (laukimo sąrašas)',
+      pUpdated: this.state.lang === 'en' ? 'Last updated: September 2026' : 'Paskutinį kartą atnaujinta: 2026 m. rugsėjis',
+      pIntro: this.state.lang === 'en'
+        ? 'This privacy policy applies only to this waitlist page (feelfy.app). The Feelfy app itself has a separate, more detailed privacy policy covering bookings, payments, and other app features.'
+        : 'Ši privatumo politika taikoma tik šiam laukimo sąrašo puslapiui (feelfy.app). Pati Feelfy programėlė turi atskirą, išsamesnę privatumo politiką, aprašančią rezervacijų, mokėjimų ir kitų programėlės funkcijų duomenų tvarkymą.',
+      pH1: this.state.lang === 'en' ? 'What data we collect' : 'Kokius duomenis renkame',
+      pP1: this.state.lang === 'en'
+        ? 'When you join the waitlist, you provide: your email address (required), name, city, and whether you\'re signing up as a client, trainer, or both (all three optional).'
+        : 'Registruodamiesi į laukimo sąrašą, pateikiate: el. pašto adresą (privaloma), vardą, miestą ir tai, ar registruojatės kaip klientas, treneris, ar abu (visi trys — neprivalomi).',
+      pH2: this.state.lang === 'en' ? 'How we use this data' : 'Kam naudojame šiuos duomenis',
+      pP2: this.state.lang === 'en' ? 'Only to:' : 'Tik tam, kad galėtume:',
+      pP2a: this.state.lang === 'en'
+        ? '— Notify you by email when the Feelfy app becomes available.'
+        : '— Pranešti el. paštu, kai Feelfy programėlė taps pasiekiama.',
+      pP2b: this.state.lang === 'en'
+        ? '— Understand how many people, and in which cities, are interested in Feelfy before launch.'
+        : '— Suprasti, kiek žmonių ir kokiuose miestuose domisi Feelfy prieš paleidimą.',
+      pP2c: this.state.lang === 'en'
+        ? 'Your data is never sold or shared with third parties for marketing purposes.'
+        : 'Jūsų duomenys niekada nėra parduodami ar perduodami trečiosioms šalims rinkodaros tikslais.',
+      pH3: this.state.lang === 'en' ? 'How long we keep it' : 'Kiek laiko saugome',
+      pP3: this.state.lang === 'en'
+        ? 'We\'ll keep your data until the app launches and you unsubscribe from updates, or for up to 12 months if launch is delayed.'
+        : 'Duomenis saugosime tol, kol programėlė bus paleista ir kol nuspręsite atsisakyti naujienlaiškio, arba iki 12 mėnesių, jei programėlės paleidimas užsitęs.',
+      pH4: this.state.lang === 'en' ? 'Your rights' : 'Jūsų teisės',
+      pP4: this.state.lang === 'en'
+        ? 'You can request deletion of your data at any time by emailing support@feelfy.app. We\'ll respond within 30 days.'
+        : 'Bet kada galite paprašyti ištrinti savo duomenis, parašę el. paštu support@feelfy.app. Atsakysime per 30 dienų.',
+      pH5: this.state.lang === 'en' ? 'Data controller' : 'Duomenų valdytojas',
+      pP5: this.state.lang === 'en'
+        ? 'Feelfy, MB (company code 308099126), Vilnius, Lithuania. Contact: support@feelfy.app'
+        : 'Feelfy, MB (įmonės kodas 308099126), Vilnius, Lietuva. Klausimais kreipkitės: support@feelfy.app',
+      btnLabel: this.state.sent ? 'Ačiū, pranešime apie programėlės naujienas' : 'Registruotis',
+      btnBg: '#1b7cf6',
+      btnBgHover: this.state.sent ? '#1b7cf6' : '#0f63d4',
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      nameVal: this.state.name,
+      onName: (e) => this.setState({ name: e.target.value }),
+      cityVal: this.state.city,
+      onCity: (e) => this.setState({ city: e.target.value }),
+      roleClient: this.state.role === 'client',
+      roleTrainer: this.state.role === 'trainer',
+      roleBoth: this.state.role === 'both',
+      onRoleClient: () => this.setState({ role: 'client' }),
+      onRoleTrainer: () => this.setState({ role: 'trainer' }),
+      onRoleBoth: () => this.setState({ role: 'both' }),
+      errorShown: this.state.error ? 'block' : 'none',
+      errorText: this.state.lang === 'en'
+        ? (this.state.error === 'duplicate' ? 'This email is already on the waitlist.' : 'Something went wrong. Please try again.')
+        : (this.state.error === 'duplicate' ? 'Šis el. paštas jau užregistruotas.' : 'Nepavyko užregistruoti. Bandykite dar kartą.'),
+      onSubmit: async () => {
+        if (this.state.sent) return;
+        const email = (this.state.email || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return;
+        this.setState({ error: false });
+        try {
+          const res = await fetch('https://kskjnigieybpzmvakblm.supabase.co/rest/v1/waitlist', {
+            method: 'POST',
+            headers: {
+              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtza2puaWdpZXlicHptdmFrYmxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5MDQyNzksImV4cCI6MjA5ODQ4MDI3OX0.pUs0lQ4xr8cE4sqFJUHq429-DYjg5PBT9zbg3QiAZK0',
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtza2puaWdpZXlicHptdmFrYmxtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5MDQyNzksImV4cCI6MjA5ODQ4MDI3OX0.pUs0lQ4xr8cE4sqFJUHq429-DYjg5PBT9zbg3QiAZK0',
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal',
+            },
+            body: JSON.stringify({
+              email: email,
+              name: this.state.name.trim() || null,
+              city: this.state.city.trim() || null,
+              role: this.state.role,
+            }),
+          });
+          if (res.status === 201) {
+            this.setState({ sent: true, email: '', name: '', city: '', role: 'client' });
+            clearTimeout(this.sentTimer);
+            this.sentTimer = setTimeout(() => this.setState({ sent: false }), 5000);
+          } else if (res.status === 409) {
+            this.setState({ error: 'duplicate' });
+          } else {
+            this.setState({ error: 'generic' });
+          }
+        } catch (e) {
+          this.setState({ error: 'generic' });
+        }
+      },
+      eyebrowGap: narrow ? '22px' : '14px',
+      h1Gap: narrow ? '26px' : '18px',
+      copyGap: narrow ? '36px' : '24px',
+      tagsGap: narrow ? '32px' : '22px',
+      formPad: narrow ? '30px 30px 28px' : '22px 26px 20px',
+      tagsDir: narrow ? 'row' : 'column',
+      tagsJustify: narrow ? 'center' : 'flex-start',
+      tagRowDisplay: narrow ? 'contents' : 'flex',
+      footerPad: narrow ? '54px 24px 30px' : '40px 0 0',
+      edgeDisplay: narrow ? 'none' : 'block',
+      badgeAlign: 'center',
+      rootDir: narrow ? 'column' : 'row',
+      rootWrap: narrow ? 'nowrap' : 'wrap',
+      footerTop: 'auto',
+      footerAlign: narrow ? 'center' : 'left',
+      stageMinH: narrow ? '640px' : '0',
+      stagePad: narrow ? '110px 28px 110px' : '64px 40px 150px',
+      capBottom: narrow ? '-72px' : '-118px',
+      phones: phones,
+      activeTitle: (shots[i % shots.length] || [])[1] || '',
+      activeDesc: (shots[i % shots.length] || [])[2] || '',
+      bgA: trainerMode ? 'transparent' : '#fff',
+      fgA: trainerMode ? 'rgba(255,255,255,.88)' : '#1b7cf6',
+      bgT: trainerMode ? '#fff' : 'transparent',
+      fgT: trainerMode ? '#1b7cf6' : 'rgba(255,255,255,.88)',
+      setAthlete: () => { this.turns = 0; this.pos = 0; this.setState({ mode: 'athlete', shot: 0 }); },
+      setTrainer: () => { this.turns = 0; this.pos = 0; this.setState({ mode: 'trainer', shot: 0 }); },
+      ringRef: this.ringRef,
+      prev: () => this.go(-1),
+      next: () => this.go(1),
+      stageRef: this.stageRef,
+      phoneRef: this.phoneRef,
+      glareRef: this.glareRef,
+      onDown: (e) => { this.drag = { x: e.clientX, y: e.clientY }; },
+      onMove: (e) => {
+        if (!this.drag) return;
+        const dx = e.clientX - this.drag.x;
+        const dy = e.clientY - this.drag.y;
+        this.target.y = Math.max(-max, Math.min(max, dx * 0.12));
+        this.target.x = Math.max(-max * 0.7, Math.min(max * 0.7, -dy * 0.08));
+      },
+      onUp: () => { this.drag = null; this.target = { ...this.rest }; }
+    };
+  }
+}
+</script>
+</body>
+</html>
