@@ -190,9 +190,11 @@ class Component extends DCLogic {
           const x = rx * Math.sin(a);
           const z = rz * (Math.cos(a) - 1);
           const front = (1 + Math.cos(a)) / 2;
-          el.style.transform = `translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${(a * 180 / Math.PI).toFixed(2)}deg)`;
+          const frontPow = Math.pow(front, 6);
+          const scale = 0.7 + 0.3 * frontPow;
+          el.style.transform = `translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${(a * 180 / Math.PI).toFixed(2)}deg) scale(${scale.toFixed(3)})`;
           const vis = front > 0.7;
-          el.style.opacity = vis ? (0.28 + 0.72 * Math.pow(front, 6)).toFixed(3) : '0';
+          el.style.opacity = vis ? (0.28 + 0.72 * frontPow).toFixed(3) : '0';
           el.style.visibility = vis ? 'visible' : 'hidden';
           el.style.zIndex = String(Math.round(front * 100));
           el.style.pointerEvents = front > 0.995 ? 'auto' : 'none';
