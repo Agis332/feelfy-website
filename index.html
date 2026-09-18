@@ -233,19 +233,19 @@ class Component extends DCLogic {
     const rz = this.rz();
     const trainerMode = this.state.mode === 'trainer';
     const shots = trainerMode ? [
-      ['uploads/Screenshot_20260917_143007_Feelfy.jpg', 'Trenerio pradinis ekranas', 'Dienos apžvalga: sesijos, uždarbis, reitingas ir greiti veiksmai.'],
-      ['uploads/Screenshot_20260916_151113_Feelfy.jpg', 'Uždarbis', 'Išmokoms paruošta suma, mėnesių istorija ir operacijų sąrašas.'],
-      ['uploads/Screenshot_20260916_151235_Feelfy.jpg', 'Atsiliepimai', 'Bendras reitingas, vertinimų skirstymas ir atsakymai klientams.'],
-      ['uploads/Screenshot_20260916_145647_Feelfy.jpg', 'Sesijos', 'Naujos, būsimos ir įvykusios treniruotės su klientų informacija.'],
-      ['uploads/Screenshot_20260916_145728_Feelfy.jpg', 'Kalendorius', 'Mėnesio vaizdas su pažymėtomis dienomis ir dienos tvarkaraščiu.'],
-      ['uploads/Screenshot_20260916_150725_Feelfy.jpg', 'Pranešimai', 'Rezervacijos užklausos, žinutės, atšaukimai ir nauji atsiliepimai.']
+      ['uploads/Screenshot_20260917_143007_Feelfy.jpg', { lt: 'Trenerio pradinis ekranas', en: 'Trainer home screen' }, { lt: 'Dienos apžvalga: sesijos, uždarbis, reitingas ir greiti veiksmai.', en: 'Day overview: sessions, earnings, rating and quick actions.' }],
+      ['uploads/Screenshot_20260916_151113_Feelfy.jpg', { lt: 'Uždarbis', en: 'Earnings' }, { lt: 'Išmokoms paruošta suma, mėnesių istorija ir operacijų sąrašas.', en: 'Amount ready for payout, monthly history and a list of transactions.' }],
+      ['uploads/Screenshot_20260916_151235_Feelfy.jpg', { lt: 'Atsiliepimai', en: 'Reviews' }, { lt: 'Bendras reitingas, vertinimų skirstymas ir atsakymai klientams.', en: 'Overall rating, rating breakdown and replies to clients.' }],
+      ['uploads/Screenshot_20260916_145647_Feelfy.jpg', { lt: 'Sesijos', en: 'Sessions' }, { lt: 'Naujos, būsimos ir įvykusios treniruotės su klientų informacija.', en: 'New, upcoming and past sessions with client details.' }],
+      ['uploads/Screenshot_20260916_145728_Feelfy.jpg', { lt: 'Kalendorius', en: 'Calendar' }, { lt: 'Mėnesio vaizdas su pažymėtomis dienomis ir dienos tvarkaraščiu.', en: 'Month view with marked days and a daily schedule.' }],
+      ['uploads/Screenshot_20260916_150725_Feelfy.jpg', { lt: 'Pranešimai', en: 'Notifications' }, { lt: 'Rezervacijos užklausos, žinutės, atšaukimai ir nauji atsiliepimai.', en: 'Booking requests, messages, cancellations and new reviews.' }]
     ] : [
-      ['uploads/Screenshot_20260917_133413_Feelfy.jpg', 'Trenerio profilis', 'Gali matyti trenerio informaciją ir užsiregistruoti sesijai.'],
-      ['uploads/Screenshot_20260917_140412_Feelfy.jpg', 'Trenerių paieška', 'Filtruoji pagal sporto šaką, miestą ir kainą.'],
-      ['uploads/Screenshot_20260917_133047_Feelfy.jpg', 'Žemėlapis', 'Matai, kurie treneriai dirba netoli tavęs.'],
-      ['uploads/Screenshot_20260916_115912_Feelfy.jpg', 'Susirašinėjimas', 'Susitari dėl detalių su treneriu programėlėje.'],
-      ['uploads/Screenshot_20260916_120619_Feelfy.jpg', 'Rezervacijos', 'Visos tavo rezervacijos ir jų statusai vienoje vietoje.'],
-      ['uploads/Screenshot_20260916_121156_Feelfy.jpg', 'Kalendorius', 'Pasirenki laisvą laiką iš realaus trenerio tvarkaraščio.']
+      ['uploads/Screenshot_20260917_133413_Feelfy.jpg', { lt: 'Trenerio profilis', en: 'Trainer profile' }, { lt: 'Gali matyti trenerio informaciją ir užsiregistruoti sesijai.', en: 'View trainer details and sign up for a session.' }],
+      ['uploads/Screenshot_20260917_140412_Feelfy.jpg', { lt: 'Trenerių paieška', en: 'Trainer search' }, { lt: 'Filtruoji pagal sporto šaką, miestą ir kainą.', en: 'Filter by sport, city and price.' }],
+      ['uploads/Screenshot_20260917_133047_Feelfy.jpg', { lt: 'Žemėlapis', en: 'Map' }, { lt: 'Matai, kurie treneriai dirba netoli tavęs.', en: 'See which trainers work near you.' }],
+      ['uploads/Screenshot_20260916_115912_Feelfy.jpg', { lt: 'Susirašinėjimas', en: 'Messaging' }, { lt: 'Susitari dėl detalių su treneriu programėlėje.', en: 'Sort out the details with your trainer in the app.' }],
+      ['uploads/Screenshot_20260916_120619_Feelfy.jpg', { lt: 'Rezervacijos', en: 'Bookings' }, { lt: 'Visos tavo rezervacijos ir jų statusai vienoje vietoje.', en: 'All your bookings and their statuses in one place.' }],
+      ['uploads/Screenshot_20260916_121156_Feelfy.jpg', { lt: 'Kalendorius', en: 'Calendar' }, { lt: 'Pasirenki laisvą laiką iš realaus trenerio tvarkaraščio.', en: "Pick a free slot from your trainer's real schedule." }]
     ];
     const phones = [];
     for (let k = 0; k < n; k++) {
@@ -256,8 +256,8 @@ class Component extends DCLogic {
         slot: (trainerMode ? 'feelfy-trainer-shot-' : 'feelfy-app-shot-v2-') + (k + 1),
         src: (shots[k % shots.length] || [])[0] || '',
         screenBg: (shots[k % shots.length] || [])[0] ? '#0c0d10' : '#f3f2ee',
-        label: (shots[k % shots.length] || [])[1] || ('Ekranas ' + (k + 1)),
-        desc: (shots[k % shots.length] || [])[2] || '',
+        label: ((shots[k % shots.length] || [])[1] || {})[this.state.lang] || ('Ekranas ' + (k + 1)),
+        desc: ((shots[k % shots.length] || [])[2] || {})[this.state.lang] || '',
         idx: k,
         tf: 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + (k * 360 / n).toFixed(2) + 'deg)',
         op: k === i ? 1 : 0.4,
@@ -430,8 +430,8 @@ class Component extends DCLogic {
       navBtnBg: narrow ? 'rgba(6,36,84,.16)' : 'rgba(6,36,84,.28)',
       navBtnBorder: narrow ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.5)',
       phones: phones,
-      activeTitle: (shots[i % shots.length] || [])[1] || '',
-      activeDesc: (shots[i % shots.length] || [])[2] || '',
+      activeTitle: ((shots[i % shots.length] || [])[1] || {})[this.state.lang] || '',
+      activeDesc: ((shots[i % shots.length] || [])[2] || {})[this.state.lang] || '',
       bgA: trainerMode ? 'transparent' : '#fff',
       fgA: trainerMode ? 'rgba(255,255,255,.88)' : '#1b7cf6',
       bgT: trainerMode ? '#fff' : 'transparent',
