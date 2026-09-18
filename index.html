@@ -169,6 +169,8 @@ class Component extends DCLogic {
     this.ringRef = React.createRef();
     this.turns = 0;
     this.pos = 0;
+    this.easeFrom = 0;
+    this.easeStart = performance.now();
     this.state = { shot: 0, email: '', name: '', city: '', role: 'client', sent: false, lang: 'en', policy: false, error: false, mode: 'athlete', narrow: typeof window !== 'undefined' && window.innerWidth < 1080 };
   }
   count() { return Math.max(2, Math.round(this.props.phoneCount ?? 6)); }
@@ -176,7 +178,9 @@ class Component extends DCLogic {
   rz() { return this.state.narrow ? Math.max(790, 265 * this.count()) : Math.max(900, 300 * this.count()); }
   go(d) {
     const n = this.count();
+    this.easeFrom = this.pos;
     this.turns += d;
+    this.easeStart = performance.now();
     this.setState({ shot: ((this.turns % n) + n) % n });
   }
   componentDidMount() {
@@ -186,7 +190,11 @@ class Component extends DCLogic {
       this.cur.y += (this.target.y - this.cur.y) * k;
       const el = this.phoneRef.current;
       if (el) el.style.transform = `rotateY(${this.cur.y.toFixed(2)}deg) rotateX(${this.cur.x.toFixed(2)}deg)`;
-      this.pos += (this.turns - this.pos) * 0.08;
+      const DURATION_MS = 400;
+      const elapsed = performance.now() - this.easeStart;
+      const t = Math.min(elapsed / DURATION_MS, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      this.pos = this.easeFrom + (this.turns - this.easeFrom) * eased;
       const ring = this.ringRef.current;
       if (ring) {
         const n = this.count(), rx = this.rx(), rz = this.rz();
@@ -435,8 +443,8 @@ class Component extends DCLogic {
       fgA: trainerMode ? 'rgba(255,255,255,.88)' : '#1b7cf6',
       bgT: trainerMode ? '#fff' : 'transparent',
       fgT: trainerMode ? '#1b7cf6' : 'rgba(255,255,255,.88)',
-      setAthlete: () => { this.turns = 0; this.pos = 0; this.setState({ mode: 'athlete', shot: 0 }); },
-      setTrainer: () => { this.turns = 0; this.pos = 0; this.setState({ mode: 'trainer', shot: 0 }); },
+      setAthlete: () => { this.turns = 0; this.pos = 0; this.easeFrom = 0; this.easeStart = performance.now(); this.setState({ mode: 'athlete', shot: 0 }); },
+      setTrainer: () => { this.turns = 0; this.pos = 0; this.easeFrom = 0; this.easeStart = performance.now(); this.setState({ mode: 'trainer', shot: 0 }); },
       ringRef: this.ringRef,
       prev: () => this.go(-1),
       next: () => this.go(1),
