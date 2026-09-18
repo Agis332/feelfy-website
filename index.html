@@ -83,7 +83,7 @@ input::placeholder{color:#9b9a95}
     <button type="button" onClick="{{ setTrainer }}" style="font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:.02em;padding:6px 11px;border:0;border-radius:7px;cursor:pointer;background:{{ bgT }};color:{{ fgT }}">Treneris</button>
   </div>
   <div style="position:relative;perspective:1500px;perspective-origin:50% 50%">
-    <div ref="{{ phoneRef }}" style="position:relative;width:342px;height:698px;transform-style:preserve-3d;will-change:transform;transform:rotateY(0deg) rotateX(0deg)">
+    <div ref="{{ phoneRef }}" style="position:relative;width:{{ phoneW }};height:{{ phoneH }};transform-style:preserve-3d;will-change:transform;transform:rotateY(0deg) rotateX(0deg)">
       <div ref="{{ ringRef }}" style="position:absolute;inset:0;transform-style:preserve-3d;will-change:transform">
 
         <sc-for list="{{ phones }}" as="p" hint-placeholder-count="6">
@@ -104,8 +104,8 @@ input::placeholder{color:#9b9a95}
       <div style="font-family:Archivo,sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;color:#fff;margin-bottom:7px">{{ activeTitle }}</div>
       <div style="font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88);text-wrap:pretty">{{ activeDesc }}</div>
     </div>
-    <button type="button" onClick="{{ prev }}" aria-label="Ankstesnis ekranas" style="position:absolute;top:50%;left:-104px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">‹</button>
-    <button type="button" onClick="{{ next }}" aria-label="Kitas ekranas" style="position:absolute;top:50%;right:-104px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">›</button>
+    <button type="button" onClick="{{ prev }}" aria-label="Ankstesnis ekranas" style="position:absolute;top:50%;left:{{ prevPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">‹</button>
+    <button type="button" onClick="{{ next }}" aria-label="Kitas ekranas" style="position:absolute;top:50%;right:{{ nextPos }};transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:99px;border:1px solid rgba(255,255,255,.5);background:rgba(6,36,84,.28);color:#fff;font-family:Archivo,sans-serif;font-size:19px;line-height:1;cursor:pointer;transition:background .18s" style-hover="background:rgba(6,36,84,.5)">›</button>
   </div>
 </div>
 
@@ -163,8 +163,8 @@ class Component extends DCLogic {
     this.state = { shot: 0, email: '', name: '', city: '', role: 'client', sent: false, lang: 'lt', policy: false, error: false, mode: 'athlete', narrow: typeof window !== 'undefined' && window.innerWidth < 1080 };
   }
   count() { return Math.max(2, Math.round(this.props.phoneCount ?? 6)); }
-  rx() { return 430; }
-  rz() { return Math.max(900, 300 * this.count()); }
+  rx() { return this.state.narrow ? 330 : 430; }
+  rz() { return this.state.narrow ? Math.max(700, 230 * this.count()) : Math.max(900, 300 * this.count()); }
   go(d) {
     const n = this.count();
     this.turns += d;
@@ -385,6 +385,10 @@ class Component extends DCLogic {
       stageMinH: narrow ? '640px' : '0',
       stagePad: narrow ? '110px 28px 110px' : '64px 40px 150px',
       capBottom: narrow ? '-72px' : '-118px',
+      phoneW: narrow ? '260px' : '342px',
+      phoneH: narrow ? '530px' : '698px',
+      prevPos: narrow ? '-48px' : '-104px',
+      nextPos: narrow ? '-48px' : '-104px',
       phones: phones,
       activeTitle: (shots[i % shots.length] || [])[1] || '',
       activeDesc: (shots[i % shots.length] || [])[2] || '',
