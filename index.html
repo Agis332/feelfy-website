@@ -36,7 +36,7 @@ input::placeholder{color:#9b9a95}
   <div style="order:4;padding:{{ childPad }};display:flex;flex-direction:column;justify-content:center;max-width:840px">
     <p style="font-size:clamp(18px,1.3vw,22px);line-height:1.55;color:#55544f;margin:{{ copyTop }} 0 {{ copyGap }};max-width:720px;text-wrap:pretty">Vienoje programėlėje atrask savo sporto trenerį: išsirink pagal savo sporto šaką ir miestą, matyk kainas, sesijų trukmes ir specializacijas, rinkis laisvą laiką iš realaus tvarkaraščio ir rezervuok su apmokėjimu telefone.</p>
 
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 {{ tagsGap }};max-width:700px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:{{ tagsJustify }};gap:8px;margin:-6px 0 {{ tagsGap }};max-width:700px">
       <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Patogu rezervuoti treniruotę</span>
       <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Nėra mėnesinio mokesčio</span>
       <span style="font-size:clamp(12.5px,.9vw,14.5px);font-weight:600;color:#33322e;background:#f1f0ec;border:1px solid #e6e5e0;border-radius:99px;padding:7px 13px;white-space:nowrap">Apmokėjimas telefone</span>
@@ -46,11 +46,13 @@ input::placeholder{color:#9b9a95}
     </div>
 
     <div style="padding:{{ formPad }};border-radius:22px;max-width:820px;background:#f3f2ee;border:1px solid #e5e3dd;box-shadow:0 1px 0 rgba(255,255,255,.7) inset;margin-bottom:18px">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-bottom:18px">
+      <div style="display:flex;flex-direction:{{ regDir }};flex-wrap:wrap;align-items:{{ regAlign }};gap:{{ regGap }};margin-bottom:18px">
         <span style="font-weight:700;font-size:15px;color:#111">Registruojuosi kaip</span>
-        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleClient }}" onChange="{{ onRoleClient }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Klientas</label>
-        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleTrainer }}" onChange="{{ onRoleTrainer }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Treneris</label>
-        <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleBoth }}" onChange="{{ onRoleBoth }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Abu</label>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px {{ regRadioGap }}">
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleClient }}" onChange="{{ onRoleClient }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Klientas</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleTrainer }}" onChange="{{ onRoleTrainer }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Treneris</label>
+          <label style="display:flex;align-items:center;gap:9px;font-size:16px;color:#33322e;cursor:pointer"><input type="radio" name="feelfy-role" checked="{{ roleBoth }}" onChange="{{ onRoleBoth }}" style="width:19px;height:19px;accent-color:#1b7cf6;margin:0">Abu</label>
+        </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px">
         <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="vardas@pastas.com" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
@@ -372,6 +374,10 @@ class Component extends DCLogic {
       copyGap: narrow ? '36px' : '24px',
       tagsGap: narrow ? '32px' : '22px',
       formPad: narrow ? '30px 30px 28px' : '22px 26px 20px',
+      regDir: narrow ? 'column' : 'row',
+      regAlign: narrow ? 'flex-start' : 'center',
+      regGap: narrow ? '10px' : '10px 26px',
+      regRadioGap: narrow ? '16px' : '26px',
       tagsDir: narrow ? 'row' : 'column',
       tagsJustify: narrow ? 'center' : 'flex-start',
       tagRowDisplay: narrow ? 'contents' : 'flex',
@@ -383,7 +389,7 @@ class Component extends DCLogic {
       footerTop: 'auto',
       footerAlign: narrow ? 'center' : 'left',
       stageMinH: narrow ? '640px' : '0',
-      stagePad: narrow ? '70px 28px 150px' : '64px 40px 150px',
+      stagePad: narrow ? '65px 28px 110px' : '64px 40px 150px',
       capBottom: narrow ? '-95px' : '-118px',
       phoneW: narrow ? '300px' : '342px',
       phoneH: narrow ? '610px' : '698px',
