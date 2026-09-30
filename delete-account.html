@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your Feelfy account · Feelfy paskyros ištrynimas</title>
+<meta name="description" content="How to delete your Feelfy account. Kaip ištrinti Feelfy paskyrą.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#fefdfa;color:#111;font-family:Mulish,system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:#1b7cf6;text-decoration:none}
+  a:hover{color:#0f5ec6}
+  .wrap{max-width:680px;margin:0 auto;padding:24px 20px 40px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:40px}
+  header img{height:48px;width:auto;display:block}
+  /* The language pill, styled as the main site's LT/EN toggle (index.html). */
+  .lang{display:flex;padding:3px;background:#f1f0ec;border-radius:9px;gap:2px;font-family:Archivo,sans-serif;font-weight:600;font-size:12px;letter-spacing:0.04em}
+  .lang a,.lang a:hover{padding:6px 12px;border-radius:7px;background:transparent;color:#6d6c67}
+  html[data-lang="lt"] .lang a[href="#lt"],
+  html[data-lang="en"] .lang a[href="#en"]{background:#111;color:#fff}
+  h1{font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(30px,6vw,40px);line-height:1.1;letter-spacing:-0.03em;margin:0 0 24px}
+  p{margin:0 0 18px}
+  strong{font-weight:700}
+  hr{border:0;border-top:1px solid #e8e6df;margin:44px 0}
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid #e8e6df;font-size:14.5px;color:#8a8983}
+  footer p{margin:0}
+  footer a{color:#8a8983;border-bottom:1px solid rgba(138,137,131,.4)}
+  /* One language at a time once the script below has run. Without it, both
+     languages show, Lithuanian first. */
+  html[data-lang="en"] .lt,
+  html[data-lang="lt"] .en,
+  html[data-lang] hr{display:none}
+</style>
+<script>
+  // The language shown follows the address: #lt for Lithuanian, anything
+  // else for English, the main site's default. The main site's footer link
+  // carries the visitor's language. <html lang> and the title follow it.
+  (function () {
+    function apply() {
+      var lang = location.hash.toLowerCase() === '#lt' ? 'lt' : 'en';
+      var root = document.documentElement;
+      root.lang = lang;
+      root.setAttribute('data-lang', lang);
+      document.title = lang === 'lt' ? 'Feelfy paskyros ištrynimas' : 'Delete your Feelfy account';
+    }
+    apply();
+    window.addEventListener('hashchange', apply);
+  })();
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a href="/"><img src="uploads/darkimage.png" alt="Feelfy"></a>
+  <nav class="lang"><a href="#lt">LT</a><a href="#en">EN</a></nav>
+</header>
+
+<main>
+<section class="lt" lang="lt">
+  <h1>Feelfy paskyros ištrynimas</h1>
+  <p><strong>Programėlėje:</strong> atidarykite skirtuką „Nustatymai“, paspauskite „Security“, tada „Delete Account“. Pamatysite, kas bus ištrinta, pasirinksite priežastį ir patvirtinsite slaptažodžiu. Paskyra ištrinama iš karto, ir to atšaukti negalima. Jei dar kas nors neužbaigta (nesibaigusi rezervacija, vykdomas pinigų grąžinimas ar išmokėjimas, arba pinigai trenerio balanse), programėlė pirmiausia parodys, ką reikia sutvarkyti.</p>
+  <p><strong>Kas ištrinama:</strong> jūsų profilis, nuotraukos, žinutės, atsiliepimai, išsaugoti treneriai ir išsaugotos mokėjimo kortelės; treneriams – taip pat sertifikatai, treniruočių vietos ir tvarkaraštis.</p>
+  <p><strong>Kas lieka:</strong> jūsų ankstesnės rezervacijos ir mokėjimai, bet be jūsų vardo ir kontaktų, nes kitam rezervacijos dalyviui vis dar reikia savo įrašo. „Stripe“ saugo mokėjimų įrašus tiek, kiek reikalauja įstatymai. Daugiau apie tai – programėlės privatumo politikoje.</p>
+  <p><strong>Negalite atidaryti programėlės?</strong> Parašykite adresu <a href="mailto:support@feelfy.app?subject=I%C5%A1trinti%20mano%20paskyr%C4%85">support@feelfy.app</a> iš savo paskyros el. pašto, laiško tema „Ištrinti mano paskyrą“. Patikrinsime, kad tai tikrai jūs, per 7 dienas ištrinsime paskyrą ir patvirtinsime el. laišku.</p>
+  <p><strong>Esate mūsų laukimo sąraše?</strong> Jis atskiras nuo programėlės. Paspauskite prenumeratos atsisakymo nuorodą bet kuriame mūsų laiške arba parašykite adresu <a href="mailto:support@feelfy.app">support@feelfy.app</a>.</p>
+</section>
+
+<hr>
+
+<section class="en" lang="en">
+  <h1>Delete your Feelfy account</h1>
+  <p><strong>In the app:</strong> open the Settings tab, tap Security, then Delete Account. You'll see what gets deleted, pick a reason, and confirm with your password. It's immediate and can't be undone. If something still needs settling (a booking that isn't finished, a refund or withdrawal being processed, or money in your trainer balance), the app shows you what first.</p>
+  <p><strong>What's deleted:</strong> your profile, photos, messages, reviews, saved trainers and saved cards; for trainers, also certificates, locations and schedule.</p>
+  <p><strong>What's kept:</strong> your past bookings and payments, without your name or contact details, because the other person still needs their record. Stripe keeps payment records as the law requires. The Privacy Policy in the app explains the rest.</p>
+  <p><strong>Can't open the app?</strong> Email <a href="mailto:support@feelfy.app?subject=Delete%20my%20account">support@feelfy.app</a> from your account's email address, with the subject "Delete my account". We'll check it's you, delete the account within 7 days and confirm by email.</p>
+  <p><strong>On our waitlist?</strong> That's separate from the app. Use the unsubscribe link in any email, or write to <a href="mailto:support@feelfy.app">support@feelfy.app</a>.</p>
+</section>
+</main>
+
+<footer>
+  <p class="lt" lang="lt">© 2026 Feelfy, MB (įmonės kodas 308099126) · Vilnius, Lietuva · <a href="/">feelfy.app</a></p>
+  <p class="en" lang="en">© 2026 Feelfy, MB (company code 308099126) · Vilnius, Lithuania · <a href="/">feelfy.app</a></p>
+</footer>
+
+</div>
+</body>
+</html>

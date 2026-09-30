@@ -83,7 +83,7 @@ input::placeholder{color:#9b9a95}
     </div>
   </div>
 
-  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, {{ footerCountry }} · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
+  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, {{ footerCountry }} · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="{{ deleteLinkHref }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ deleteLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
 </div>
 
 <div ref="{{ stageRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerLeave="{{ onUp }}" style="order:3;flex:1 1 380px;min-height:{{ stageMinH }};position:relative;overflow:hidden;background:#1b7cf6;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.075) 0 2px,transparent 2px 13px);display:flex;align-items:center;justify-content:center;padding:{{ stagePad }};touch-action:pan-y;cursor:grab">
@@ -291,6 +291,8 @@ class Component extends DCLogic {
       openPolicy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ policy: true }); },
       closePolicy: () => this.setState({ policy: false }),
       policyLinkLabel: this.state.lang === 'en' ? 'Privacy Policy' : 'Privatumo politika',
+      deleteLinkLabel: this.state.lang === 'en' ? 'Delete account' : 'Paskyros ištrynimas',
+      deleteLinkHref: this.state.lang === 'en' ? '/delete-account#en' : '/delete-account#lt',
       eyebrowText: this.state.lang === 'en' ? 'APP LAUNCHING SOON' : 'PROGRAMĖLĖS STARTAS NETRUKUS',
       h1Lead: this.state.lang === 'en' ? 'Find and book' : 'Rask ir rezervuok',
       h1Highlight: this.state.lang === 'en' ? 'your sports trainer.' : 'savo sporto trenerį.',
