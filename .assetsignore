@@ -7,3 +7,4 @@ Feelfy Landing v2 scroll.dc.html
 .env*
 supabase/
 .DS_Store
+.wrangler/
