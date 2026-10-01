@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Delete your Feelfy account · Feelfy paskyros ištrynimas</title>
-<meta name="description" content="How to delete your Feelfy account. Kaip ištrinti Feelfy paskyrą.">
+<title>Privacy Policy · Privatumo politika</title>
+<meta name="description" content="Feelfy privacy policy and how to delete your account. Feelfy privatumo politika ir paskyros ištrynimas.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏋️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,8 @@
   html[data-lang="lt"] .lang a[href="#lt"],
   html[data-lang="en"] .lang a[href="#en"]{background:#111;color:#fff}
   h1{font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(30px,6vw,40px);line-height:1.1;letter-spacing:-0.03em;margin:0 0 24px}
+  h2{font-family:Archivo,sans-serif;font-weight:700;font-size:22px;line-height:1.25;letter-spacing:-0.02em;margin:36px 0 12px}
+  .updated{margin:-12px 0 24px;font-size:14.5px;color:#8a8983}
   p{margin:0 0 18px}
   strong{font-weight:700}
   hr{border:0;border-top:1px solid #e8e6df;margin:44px 0}
@@ -30,22 +32,25 @@
   footer p{margin:0}
   footer a{color:#8a8983;border-bottom:1px solid rgba(138,137,131,.4)}
   /* One language at a time once the script below has run. Without it, both
-     languages show, Lithuanian first. */
+     languages show, Lithuanian first. Only the rule between the two languages
+     hides; the one before each section's deletion text stays. */
   html[data-lang="en"] .lt,
   html[data-lang="lt"] .en,
-  html[data-lang] hr{display:none}
+  html[data-lang] main > hr{display:none}
 </style>
 <script>
-  // The language shown follows the address: #lt for Lithuanian, anything
-  // else for English, the main site's default. The main site's footer link
-  // carries the visitor's language. <html lang> and the title follow it.
+  // The language shown follows the address: Lithuanian when it starts with
+  // #lt (#lt, #lt-delete), anything else English, the main site's default.
+  // The main site's footer link carries the visitor's language. <html lang>
+  // and the title follow it. This runs before the body, so the browser's own
+  // jump to #lt-delete or #en-delete lands in the visible section.
   (function () {
     function apply() {
-      var lang = location.hash.toLowerCase() === '#lt' ? 'lt' : 'en';
+      var lang = location.hash.toLowerCase().indexOf('#lt') === 0 ? 'lt' : 'en';
       var root = document.documentElement;
       root.lang = lang;
       root.setAttribute('data-lang', lang);
-      document.title = lang === 'lt' ? 'Feelfy paskyros ištrynimas' : 'Delete your Feelfy account';
+      document.title = lang === 'lt' ? 'Privatumo politika' : 'Privacy Policy';
     }
     apply();
     window.addEventListener('hashchange', apply);
@@ -62,7 +67,26 @@
 
 <main>
 <section class="lt" lang="lt">
-  <h1>Feelfy paskyros ištrynimas</h1>
+  <h1>Privatumo politika (laukimo sąrašas)</h1>
+  <p class="updated">Paskutinį kartą atnaujinta: 2026 m. rugsėjis</p>
+  <p>Ši privatumo politika taikoma tik šiam laukimo sąrašo puslapiui (feelfy.app). Pati Feelfy programėlė turi atskirą, išsamesnę privatumo politiką, aprašančią rezervacijų, mokėjimų ir kitų programėlės funkcijų duomenų tvarkymą.</p>
+  <h2>Kokius duomenis renkame</h2>
+  <p>Registruodamiesi į laukimo sąrašą, pateikiate: el. pašto adresą (privaloma), vardą, miestą ir tai, ar registruojatės kaip klientas, treneris, ar abu (visi trys — neprivalomi).</p>
+  <h2>Kam naudojame šiuos duomenis</h2>
+  <p>Tik tam, kad galėtume:</p>
+  <p>— Pranešti el. paštu, kai Feelfy programėlė taps pasiekiama.</p>
+  <p>— Suprasti, kiek žmonių ir kokiuose miestuose domisi Feelfy prieš paleidimą.</p>
+  <p>Jūsų duomenys niekada nėra parduodami ar perduodami trečiosioms šalims rinkodaros tikslais.</p>
+  <h2>Kiek laiko saugome</h2>
+  <p>Duomenis saugosime tol, kol programėlė bus paleista ir kol nuspręsite atsisakyti naujienlaiškio, arba iki 12 mėnesių, jei programėlės paleidimas užsitęs.</p>
+  <h2>Jūsų teisės</h2>
+  <p>Bet kada galite paprašyti ištrinti savo duomenis, parašę el. paštu support@feelfy.app. Atsakysime per 30 dienų.</p>
+  <h2>Duomenų valdytojas</h2>
+  <p>Feelfy, MB (įmonės kodas 308099126), Vilnius, Lietuva. Klausimais kreipkitės: support@feelfy.app</p>
+
+  <hr>
+
+  <h2 id="lt-delete">Feelfy paskyros ištrynimas</h2>
   <p><strong>Programėlėje:</strong> atidarykite skirtuką „Nustatymai“, paspauskite „Security“, tada „Delete Account“. Pamatysite, kas bus ištrinta, pasirinksite priežastį ir patvirtinsite slaptažodžiu. Paskyra ištrinama iš karto, ir to atšaukti negalima. Jei dar kas nors neužbaigta (nesibaigusi rezervacija, vykdomas pinigų grąžinimas ar išmokėjimas, arba pinigai trenerio balanse), programėlė pirmiausia parodys, ką reikia sutvarkyti.</p>
   <p><strong>Kas ištrinama:</strong> jūsų profilis, nuotraukos, žinutės, atsiliepimai, išsaugoti treneriai ir išsaugotos mokėjimo kortelės; treneriams – taip pat sertifikatai, treniruočių vietos ir tvarkaraštis.</p>
   <p><strong>Kas lieka:</strong> jūsų ankstesnės rezervacijos ir mokėjimai, bet be jūsų vardo ir kontaktų, nes kitam rezervacijos dalyviui vis dar reikia savo įrašo. „Stripe“ saugo mokėjimų įrašus tiek, kiek reikalauja įstatymai. Daugiau apie tai – programėlės privatumo politikoje.</p>
@@ -73,7 +97,26 @@
 <hr>
 
 <section class="en" lang="en">
-  <h1>Delete your Feelfy account</h1>
+  <h1>Privacy Policy (Waitlist)</h1>
+  <p class="updated">Last updated: September 2026</p>
+  <p>This privacy policy applies only to this waitlist page (feelfy.app). The Feelfy app itself has a separate, more detailed privacy policy covering bookings, payments, and other app features.</p>
+  <h2>What data we collect</h2>
+  <p>When you join the waitlist, you provide: your email address (required), name, city, and whether you're signing up as a client, trainer, or both (all three optional).</p>
+  <h2>How we use this data</h2>
+  <p>Only to:</p>
+  <p>— Notify you by email when the Feelfy app becomes available.</p>
+  <p>— Understand how many people, and in which cities, are interested in Feelfy before launch.</p>
+  <p>Your data is never sold or shared with third parties for marketing purposes.</p>
+  <h2>How long we keep it</h2>
+  <p>We'll keep your data until the app launches and you unsubscribe from updates, or for up to 12 months if launch is delayed.</p>
+  <h2>Your rights</h2>
+  <p>You can request deletion of your data at any time by emailing support@feelfy.app. We'll respond within 30 days.</p>
+  <h2>Data controller</h2>
+  <p>Feelfy, MB (company code 308099126), Vilnius, Lithuania. Contact: support@feelfy.app</p>
+
+  <hr>
+
+  <h2 id="en-delete">Delete your Feelfy account</h2>
   <p><strong>In the app:</strong> open the Settings tab, tap Security, then Delete Account. You'll see what gets deleted, pick a reason, and confirm with your password. It's immediate and can't be undone. If something still needs settling (a booking that isn't finished, a refund or withdrawal being processed, or money in your trainer balance), the app shows you what first.</p>
   <p><strong>What's deleted:</strong> your profile, photos, messages, reviews, saved trainers and saved cards; for trainers, also certificates, locations and schedule.</p>
   <p><strong>What's kept:</strong> your past bookings and payments, without your name or contact details, because the other person still needs their record. Stripe keeps payment records as the law requires. The Privacy Policy in the app explains the rest.</p>

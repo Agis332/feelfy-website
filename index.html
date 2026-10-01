@@ -83,7 +83,7 @@ input::placeholder{color:#9b9a95}
     </div>
   </div>
 
-  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, {{ footerCountry }} · <a href="#privatumo-politika" onClick="{{ openPolicy }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="{{ deleteLinkHref }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ deleteLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
+  <div style="order:5;padding:{{ footerPad }};margin-top:{{ footerTop }};text-align:{{ footerAlign }};font-size:14.5px;color:#8a8983">© 2026 Feelfy · Vilnius, {{ footerCountry }} · <a href="{{ policyLinkHref }}" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">{{ policyLinkLabel }}</a> · <a href="mailto:support@feelfy.app" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">support@feelfy.app</a> · <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">Instagram</a> · <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" style="color:#8a8983;text-decoration:none;border-bottom:1px solid rgba(138,137,131,.4)">TikTok</a></div>
 </div>
 
 <div ref="{{ stageRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerLeave="{{ onUp }}" style="order:3;flex:1 1 380px;min-height:{{ stageMinH }};position:relative;overflow:hidden;background:#1b7cf6;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.075) 0 2px,transparent 2px 13px);display:flex;align-items:center;justify-content:center;padding:{{ stagePad }};touch-action:pan-y;cursor:grab">
@@ -118,42 +118,6 @@ input::placeholder{color:#9b9a95}
   </div>
 </div>
 
-</div>
-<div style="display:{{ policyShown }};position:fixed;inset:0;z-index:40;align-items:flex-start;justify-content:center;padding:clamp(16px,4vh,56px) 16px;background:rgba(10,14,22,.62)">
-  <div onClick="{{ closePolicy }}" style="position:absolute;inset:0"></div>
-  <div style="position:relative;width:100%;max-width:720px;max-height:100%;overflow:auto;border-radius:22px;background:#15181f;color:#e9e7e2;box-shadow:0 40px 100px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.1)">
-    <div style="position:sticky;top:0;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:30px 32px 18px;background:#15181f;border-bottom:1px solid rgba(255,255,255,.09)">
-      <h2 style="font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);line-height:1.15;letter-spacing:-0.02em;margin:0;color:#fff">{{ pTitle }}</h2>
-      <button type="button" onClick="{{ closePolicy }}" style="flex:0 0 auto;font-family:Archivo,sans-serif;font-weight:600;font-size:14px;padding:9px 15px;border:1px solid rgba(255,255,255,.28);border-radius:10px;background:transparent;color:#fff;cursor:pointer" style-hover="background:rgba(255,255,255,.12)">{{ pClose }}</button>
-    </div>
-    <div style="padding:22px 32px 34px;display:flex;flex-direction:column;gap:20px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.06em;color:#9aa0ac">{{ pUpdated }}</div>
-      <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pIntro }}</p>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH1 }}</h3>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP1 }}</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH2 }}</h3>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2 }}</p>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2a }}</p>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0">{{ pP2b }}</p>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:8px 0 0;text-wrap:pretty">{{ pP2c }}</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH3 }}</h3>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP3 }}</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH4 }}</h3>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP4 }}</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <h3 style="font-family:Archivo,sans-serif;font-weight:700;font-size:17px;letter-spacing:-0.01em;margin:0;color:#fff">{{ pH5 }}</h3>
-        <p style="font-size:16px;line-height:1.65;color:#d5d3ce;margin:0;text-wrap:pretty">{{ pP5 }}</p>
-      </div>
-    </div>
-  </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;phoneCount&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:8,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;},&quot;tiltStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:16,&quot;min&quot;:4,&quot;max&quot;:30,&quot;step&quot;:1,&quot;unit&quot;:&quot;°&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
@@ -287,12 +251,8 @@ class Component extends DCLogic {
       enFg: this.state.lang === 'en' ? '#fff' : '#6d6c67',
       setLt: () => this.setState({ lang: 'lt' }),
       setEn: () => this.setState({ lang: 'en' }),
-      policyShown: this.state.policy ? 'flex' : 'none',
-      openPolicy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ policy: true }); },
-      closePolicy: () => this.setState({ policy: false }),
       policyLinkLabel: this.state.lang === 'en' ? 'Privacy Policy' : 'Privatumo politika',
-      deleteLinkLabel: this.state.lang === 'en' ? 'Delete account' : 'Paskyros ištrynimas',
-      deleteLinkHref: this.state.lang === 'en' ? '/delete-account#en' : '/delete-account#lt',
+      policyLinkHref: this.state.lang === 'en' ? '/privacy#en' : '/privacy#lt',
       eyebrowText: this.state.lang === 'en' ? 'APP LAUNCHING SOON' : 'PROGRAMĖLĖS STARTAS NETRUKUS',
       h1Lead: this.state.lang === 'en' ? 'Find and book' : 'Rask ir rezervuok',
       h1Highlight: this.state.lang === 'en' ? 'your sports trainer.' : 'savo sporto trenerį.',
@@ -321,39 +281,6 @@ class Component extends DCLogic {
         : 'Gausi Feelfy naujienas apie paleidimą ir programėlės atnaujinimo informaciją.',
       comingSoonLabel: this.state.lang === 'en' ? 'coming soon' : 'netrukus',
       footerCountry: this.state.lang === 'en' ? 'Lithuania' : 'Lietuva',
-      pClose: this.state.lang === 'en' ? 'Close' : 'Uždaryti',
-      pTitle: this.state.lang === 'en' ? 'Privacy Policy (Waitlist)' : 'Privatumo politika (laukimo sąrašas)',
-      pUpdated: this.state.lang === 'en' ? 'Last updated: September 2026' : 'Paskutinį kartą atnaujinta: 2026 m. rugsėjis',
-      pIntro: this.state.lang === 'en'
-        ? 'This privacy policy applies only to this waitlist page (feelfy.app). The Feelfy app itself has a separate, more detailed privacy policy covering bookings, payments, and other app features.'
-        : 'Ši privatumo politika taikoma tik šiam laukimo sąrašo puslapiui (feelfy.app). Pati Feelfy programėlė turi atskirą, išsamesnę privatumo politiką, aprašančią rezervacijų, mokėjimų ir kitų programėlės funkcijų duomenų tvarkymą.',
-      pH1: this.state.lang === 'en' ? 'What data we collect' : 'Kokius duomenis renkame',
-      pP1: this.state.lang === 'en'
-        ? 'When you join the waitlist, you provide: your email address (required), name, city, and whether you\'re signing up as a client, trainer, or both (all three optional).'
-        : 'Registruodamiesi į laukimo sąrašą, pateikiate: el. pašto adresą (privaloma), vardą, miestą ir tai, ar registruojatės kaip klientas, treneris, ar abu (visi trys — neprivalomi).',
-      pH2: this.state.lang === 'en' ? 'How we use this data' : 'Kam naudojame šiuos duomenis',
-      pP2: this.state.lang === 'en' ? 'Only to:' : 'Tik tam, kad galėtume:',
-      pP2a: this.state.lang === 'en'
-        ? '— Notify you by email when the Feelfy app becomes available.'
-        : '— Pranešti el. paštu, kai Feelfy programėlė taps pasiekiama.',
-      pP2b: this.state.lang === 'en'
-        ? '— Understand how many people, and in which cities, are interested in Feelfy before launch.'
-        : '— Suprasti, kiek žmonių ir kokiuose miestuose domisi Feelfy prieš paleidimą.',
-      pP2c: this.state.lang === 'en'
-        ? 'Your data is never sold or shared with third parties for marketing purposes.'
-        : 'Jūsų duomenys niekada nėra parduodami ar perduodami trečiosioms šalims rinkodaros tikslais.',
-      pH3: this.state.lang === 'en' ? 'How long we keep it' : 'Kiek laiko saugome',
-      pP3: this.state.lang === 'en'
-        ? 'We\'ll keep your data until the app launches and you unsubscribe from updates, or for up to 12 months if launch is delayed.'
-        : 'Duomenis saugosime tol, kol programėlė bus paleista ir kol nuspręsite atsisakyti naujienlaiškio, arba iki 12 mėnesių, jei programėlės paleidimas užsitęs.',
-      pH4: this.state.lang === 'en' ? 'Your rights' : 'Jūsų teisės',
-      pP4: this.state.lang === 'en'
-        ? 'You can request deletion of your data at any time by emailing support@feelfy.app. We\'ll respond within 30 days.'
-        : 'Bet kada galite paprašyti ištrinti savo duomenis, parašę el. paštu support@feelfy.app. Atsakysime per 30 dienų.',
-      pH5: this.state.lang === 'en' ? 'Data controller' : 'Duomenų valdytojas',
-      pP5: this.state.lang === 'en'
-        ? 'Feelfy, MB (company code 308099126), Vilnius, Lithuania. Contact: support@feelfy.app'
-        : 'Feelfy, MB (įmonės kodas 308099126), Vilnius, Lietuva. Klausimais kreipkitės: support@feelfy.app',
       btnLabel: this.state.sent
         ? (this.state.lang === 'en' ? "Thanks, we'll notify you about app news" : 'Ačiū, pranešime apie programėlės naujienas')
         : (this.state.lang === 'en' ? 'Sign up' : 'Registruotis'),
