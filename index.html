@@ -62,11 +62,11 @@ input::placeholder{color:#9b9a95}
         </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px">
-        <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="{{ emailPlaceholder }}" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
+        <input type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="{{ emailPlaceholder }}" maxLength="254" style="flex:1 1 260px;min-width:0;padding:17px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #dedcd6;border-radius:14px;outline:none" style-focus="border-color:#1b7cf6;box-shadow:0 0 0 3px rgba(27,124,246,.14)">
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px">
-        <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="{{ namePlaceholder }}" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
-        <input value="{{ cityVal }}" onChange="{{ onCity }}" placeholder="{{ cityPlaceholder }}" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+        <input value="{{ nameVal }}" onChange="{{ onName }}" placeholder="{{ namePlaceholder }}" maxLength="100" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
+        <input value="{{ cityVal }}" onChange="{{ onCity }}" placeholder="{{ cityPlaceholder }}" maxLength="100" style="flex:1 1 180px;min-width:0;padding:16px 20px;font-size:16px;color:#111;background:#fff;border:1px solid #e4e2dc;border-radius:14px;outline:none" style-focus="border-color:#c9c8c2;background:#fff">
       </div>
       <div style="display:flex;margin-bottom:18px">
         <button type="button" onClick="{{ onSubmit }}" style="font-family:Archivo,sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.01em;padding:17px 34px;flex:1 1 auto;border:0;border-radius:14px;background:{{ btnBg }};color:#fff;cursor:pointer;transition:background .18s" style-hover="background:{{ btnBgHover }}">{{ btnLabel }}</button>
