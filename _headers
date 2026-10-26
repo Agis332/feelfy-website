@@ -4,3 +4,20 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# The session-report decision page (SportMatch PLAN.md B53 step 5b): its own
+# script only, calls only to the decide-session-report function, never cached,
+# indexed or framed, and no Referer. A header set again here is joined to the
+# site-wide one with a comma; for Referrer-Policy the last value, no-referrer,
+# is the one browsers use.
+/session-report
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://kskjnigieybpzmvakblm.supabase.co; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+
+/session-report.js
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://kskjnigieybpzmvakblm.supabase.co; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
