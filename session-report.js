@@ -4,8 +4,9 @@
 // decide-session-report edge function, which allows only the origin
 // https://feelfy.app and answers { error, code } on failure.
 //
-// The secret token arrives in the address's fragment (#t=<token>&a=<action>)
-// and is removed from the address bar and history before anything else runs.
+// The secret token arrives in the address's fragment (#t=<token>; older alerts'
+// buttons add &a=<action>, which pre-selects that choice) and is removed from
+// the address bar and history before anything else runs.
 // It is kept only in this script's memory: never stored, never logged. This
 // script logs nothing at all, so neither the token nor the answer's data (names,
 // the reports' descriptions) reaches the console. Every value from the answer
@@ -21,6 +22,10 @@
   var TOKEN = /^[A-Za-z0-9_-]{43}$/;
   var CHOICES = ['release', 'refund', 'split', 'extend'];
   var DAY_MS = 24 * 60 * 60 * 1000;
+  // A report's first deadline is its created_at + 7 days, and Extend adds 7
+  // (Agis, 2026-10-26: one option only; the database also accepts 10).
+  var REPORT_DAYS = 7;
+  var EXTEND_DAYS = 7;
 
   // Agis's approved texts (2026-10-26), keyed by the function's codes.
   var INVALID_LINK = "This link isn't valid.";
@@ -50,7 +55,6 @@
 
   var view = null;        // the 'view' answer
   var choice = null;      // the selected choice
-  var days = null;        // 7 or 10, for Extend
   var busy = false;
   var finished = false;
 
@@ -157,10 +161,42 @@
       : priceCents();
   }
 
+  function reportList() {
+    return Array.isArray(view.reports) ? view.reports : [];
+  }
+
+  // " · extended by 7 days", " · extended twice, by 14 days", " · extended 3
+  // times, by 21 days", ..., from the earliest open report's deadline against
+  // its created_at (whole days, so a DST change doesn't count); '' when it
+  // isn't extended, or by something other than 7-day steps.
+  function extensionNote() {
+    var earliest = null;
+    reportList().forEach(function (report) {
+      if (report.resolved_at) return;
+      var deadline = new Date(report.deadline_at).getTime();
+      var created = new Date(report.created_at).getTime();
+      if (isNaN(deadline) || isNaN(created)) return;
+      if (earliest === null || deadline < earliest.deadline) {
+        earliest = { deadline: deadline, created: created };
+      }
+    });
+    if (earliest === null) return '';
+    var extra = Math.round((earliest.deadline - earliest.created) / DAY_MS) - REPORT_DAYS;
+    if (extra <= 0 || extra % EXTEND_DAYS !== 0) return '';
+    var times = extra / EXTEND_DAYS;
+    if (times === 1) return ' · extended by ' + extra + ' days';
+    if (times === 2) return ' · extended twice, by ' + extra + ' days';
+    return ' · extended ' + times + ' times, by ' + extra + ' days';
+  }
+
+  function showDeadline(iso) {
+    $('deadline').textContent = iso ? vilnius(iso) : '—';
+    $('extended').textContent = extensionNote();
+  }
+
   function render() {
     var reports = $('reports');
-    var list = Array.isArray(view.reports) ? view.reports : [];
-    list.forEach(function (report) {
+    reportList().forEach(function (report) {
       var card = document.createElement('div');
       card.className = 'card';
       var rows = document.createElement('dl');
@@ -195,7 +231,13 @@
     row(amounts, "Feelfy's fee", '€' + euros(feeCents()));
     row(amounts, 'Total paid', '€' + euros(priceCents() + feeCents()), true);
 
-    $('deadline').textContent = view.deadline_at ? vilnius(view.deadline_at) : '—';
+    showDeadline(view.deadline_at);
+
+    var from = new Date(view.deadline_at).getTime();
+    if (view.deadline_at && !isNaN(from)) {
+      $('extend-deadline').textContent = 'New deadline: ' + vilnius(new Date(from + EXTEND_DAYS * DAY_MS).toISOString());
+      $('extend-deadline').hidden = false;
+    }
 
     $('release-question').textContent = 'Release €' + euros(releaseCents()) + ' to the trainer?';
     $('refund-question').textContent = 'Refund €' + euros(priceCents()) + " to the client? Feelfy's fee (€" + euros(feeCents()) + ') is kept.';
@@ -241,21 +283,6 @@
       (amounts ? '€' + euros(priceCents() - amounts.client - amounts.trainer) : '—');
   }
 
-  function selectDays(value) {
-    days = value;
-    Array.prototype.forEach.call(document.querySelectorAll('[data-days]'), function (button) {
-      button.setAttribute('aria-pressed', Number(button.getAttribute('data-days')) === value ? 'true' : 'false');
-    });
-    var line = $('extend-deadline');
-    var from = new Date(view.deadline_at).getTime();
-    if (view.deadline_at && !isNaN(from)) {
-      line.textContent = 'New deadline: ' + vilnius(new Date(from + value * DAY_MS).toISOString());
-      line.hidden = false;
-    }
-    clearResult();
-    refreshControls();
-  }
-
   // Disables everything while a request runs and once the page is finished;
   // otherwise each Confirm only when its choice is complete.
   function refreshControls() {
@@ -265,13 +292,13 @@
     });
     if (locked) return;
     document.querySelector('[data-confirm="split"]').disabled = splitAmounts() === null;
-    document.querySelector('[data-confirm="extend"]').disabled = days === null;
   }
 
   // ---- The function -----------------------------------------------------
 
   // { ok: true, data } on a 2xx with a JSON object; otherwise { ok: false,
-  // code }, code null when there was no answer or no code in it.
+  // code, resolution }, code null when there was no answer or no code in it,
+  // resolution already_resolved's decision, or null.
   function call(body) {
     body.token = token;
     return fetch(ENDPOINT, {
@@ -291,9 +318,13 @@
     }).then(function (answer) {
       var data = answer.data && typeof answer.data === 'object' ? answer.data : null;
       if (answer.response.ok && data) return { ok: true, data: data };
-      return { ok: false, code: data && typeof data.code === 'string' ? data.code : null };
+      return {
+        ok: false,
+        code: data && typeof data.code === 'string' ? data.code : null,
+        resolution: data && data.resolution && typeof data.resolution === 'object' ? data.resolution : null
+      };
     }, function () {
-      return { ok: false, code: null };
+      return { ok: false, code: null, resolution: null };
     });
   }
 
@@ -314,20 +345,41 @@
     return lines;
   }
 
-  // "Done. €8.00 refunded to the client, €5.00 released to the trainer, €5.00
-  // kept by Feelfy. Both have been emailed.", from only the parts that apply.
-  function decisionDone(data) {
-    var client = cents(data.client_refund_cents);
-    var trainer = cents(data.trainer_cents);
+  // A decision's parts, "€8.00 refunded to the client", "€5.00 released to
+  // the trainer", "€5.00 kept by Feelfy", only those that apply.
+  function decisionParts(resolution, client, trainer, price) {
     var parts = [];
     if (client > 0) parts.push('€' + euros(client) + ' refunded to the client');
     if (trainer > 0) parts.push('€' + euros(trainer) + ' released to the trainer');
-    if (data.resolution === 'split') {
-      var kept = priceCents() - client - trainer;
+    if (resolution === 'split') {
+      var kept = price - client - trainer;
       if (kept > 0) parts.push('€' + euros(kept) + ' kept by Feelfy');
     }
+    return parts;
+  }
+
+  // "Done. €8.00 refunded to the client, €5.00 released to the trainer, €5.00
+  // kept by Feelfy. Both have been emailed.", from only the parts that apply.
+  function decisionDone(data) {
+    var parts = decisionParts(data.resolution, cents(data.client_refund_cents), cents(data.trainer_cents), priceCents());
     var first = parts.length > 0 ? 'Done. ' + parts.join(', ') + '.' : 'Done.';
     return [first].concat(emailLines(data.emailed)).join(' ');
+  }
+
+  // "This report was resolved on 26 October 2026, 23:11: €8.00 refunded to
+  // the client, €5.00 released to the trainer, €5.00 kept by Feelfy.", from
+  // already_resolved's resolution; the plain sentence without one.
+  function resolvedText(resolution) {
+    var at = resolution ? vilnius(resolution.resolved_at) : '—';
+    if (at === '—') return ALREADY_RESOLVED;
+    var parts = decisionParts(resolution.resolution, cents(resolution.client_refund_cents),
+      cents(resolution.trainer_cents), cents(resolution.price_cents));
+    return 'This report was resolved on ' + at + (parts.length > 0 ? ': ' + parts.join(', ') : '') + '.';
+  }
+
+  function errorText(answer) {
+    if (answer.code === 'already_resolved') return resolvedText(answer.resolution);
+    return ERRORS[answer.code] || GENERIC;
   }
 
   function extensionDone(data) {
@@ -343,10 +395,7 @@
       body.client_amount = amounts.client;
       body.trainer_amount = amounts.trainer;
     }
-    if (name === 'extend') {
-      if (days === null) return;
-      body.days = days;
-    }
+    if (name === 'extend') body.days = EXTEND_DAYS;
     busy = true;
     clearResult();
     refreshControls();
@@ -355,14 +404,24 @@
       if (answer.ok) {
         finished = true;
         if (name === 'extend') {
-          if (answer.data.deadline_at) $('deadline').textContent = vilnius(answer.data.deadline_at);
+          if (answer.data.deadline_at) {
+            // As extend_session_reports moved them: every open report's
+            // deadline + 7 days, so the note counts this extension too.
+            reportList().forEach(function (report) {
+              var deadline = new Date(report.deadline_at).getTime();
+              if (!report.resolved_at && !isNaN(deadline)) {
+                report.deadline_at = new Date(deadline + EXTEND_DAYS * DAY_MS).toISOString();
+              }
+            });
+            showDeadline(answer.data.deadline_at);
+          }
           showResult(extensionDone(answer.data), true);
         } else {
           showResult(decisionDone(answer.data), true);
         }
       } else {
         if (FINAL[answer.code]) finished = true;
-        showResult(ERRORS[answer.code] || GENERIC, false);
+        showResult(errorText(answer), false);
       }
       refreshControls();
     });
@@ -376,9 +435,6 @@
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-choice]'), function (button) {
       button.addEventListener('click', function () { select(button.getAttribute('data-choice')); });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-days]'), function (button) {
-      button.addEventListener('click', function () { selectDays(Number(button.getAttribute('data-days'))); });
     });
     Array.prototype.forEach.call(document.querySelectorAll('[data-confirm]'), function (button) {
       button.addEventListener('click', function () { confirm(button.getAttribute('data-confirm')); });
@@ -396,7 +452,7 @@
         view = answer.data;
         render();
       } else if (answer.code === 'invalid_link' || answer.code === 'already_resolved') {
-        showMessage(ERRORS[answer.code]);
+        showMessage(errorText(answer));
       } else {
         showMessage(GENERIC);
       }

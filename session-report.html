@@ -7,8 +7,9 @@
 <meta name="referrer" content="no-referrer">
 <title>Session report</title>
 <!-- Feelfy support's decision page for a "Something wrong with the session?"
-     report (SportMatch PLAN.md B53 step 5b). Opened only from the buttons in
-     support's alert email: https://feelfy.app/session-report#t=<token>&a=<action>.
+     report (SportMatch PLAN.md B53 step 5b). Opened only from the Decide
+     button in support's alert email: https://feelfy.app/session-report#t=<token>
+     (older alerts' buttons add &a=<action>, which pre-selects that choice).
      The token stays in the fragment, which the browser never sends;
      session-report.js removes it from the address bar at once and talks to
      the decide-session-report function. Everything shown comes from that
@@ -44,8 +45,6 @@
   .field span{color:#6d6c67}
   .field input{width:120px;font:inherit;padding:10px 12px;border:1px solid #d6d4cc;border-radius:8px;text-align:right}
   .field input[aria-invalid="true"]{border-color:#DC2626}
-  .days{display:flex;gap:8px;margin:0 0 14px}
-  .days .choice{flex:1}
   .result{margin:16px 0 0;padding:14px 16px;border-radius:12px;white-space:pre-line}
   .result.ok{background:#ECFDF3;border:1px solid #A7E3BD}
   .result.err{background:#FEF2F2;border:1px solid #F5B5B5}
@@ -71,7 +70,7 @@
     <h2>Amounts</h2>
     <div class="card"><dl id="amounts" class="rows"></dl></div>
 
-    <p class="deadline">Decide by: <strong id="deadline"></strong></p>
+    <p class="deadline">Decide by: <strong id="deadline"></strong><span id="extended"></span></p>
 
     <div class="choices">
       <button type="button" class="choice" data-choice="release" aria-pressed="false">Release to the trainer</button>
@@ -106,10 +105,7 @@
     </div>
 
     <div id="panel-extend" class="panel" hidden>
-      <div class="days">
-        <button type="button" class="choice" data-days="7" aria-pressed="false">+7 days</button>
-        <button type="button" class="choice" data-days="10" aria-pressed="false">+10 days</button>
-      </div>
+      <p>Extend the deadline by 7 days?</p>
       <p id="extend-deadline" hidden></p>
       <button type="button" class="confirm" data-confirm="extend">Confirm</button>
     </div>
