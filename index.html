@@ -1833,6 +1833,10 @@
         flex-direction: row;
         align-items: center;
       }
+
+      #footer-copy {
+        order: -1;
+      }
     }
 
     .footer-nav {
@@ -1853,6 +1857,36 @@
 
     .footer-nav a:hover {
       color: var(--blue);
+    }
+
+    .footer-nav a.footer-social {
+      gap: 6px;
+    }
+
+    .footer-nav a.footer-social svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 479px) {
+      .site-footer {
+        padding: 18px 0 22px;
+      }
+
+      .footer-row {
+        gap: 10px;
+      }
+
+      .footer-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .footer-nav a {
+        min-height: 40px;
+      }
     }
   </style>
 </head>
@@ -2210,13 +2244,13 @@
 
   <footer class="site-footer">
     <div class="container footer-row">
-      <div id="footer-copy">© 2026 Feelfy, MB · Vilnius, Lithuania</div>
       <div class="footer-nav">
+        <a class="footer-social" href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        <a class="footer-social" href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.3 2.2 1.6 3.7 3.9 3.9v3.1c-1.4.1-2.7-.3-3.9-1v6.1c0 3.5-2.6 5.9-5.8 5.9-3.1 0-5.6-2.4-5.6-5.6 0-3.4 2.9-6 6.5-5.5v3.2c-1.6-.4-3.2.6-3.2 2.3 0 1.3 1 2.4 2.4 2.4 1.5 0 2.5-1.1 2.5-2.7V3h3.2z"/></svg><span>TikTok</span></a>
         <a href="/privacy#en" id="privacy-link" data-t="privacyLabel">Privacy Policy</a>
         <a href="mailto:support@feelfy.app">support@feelfy.app</a>
-        <a href="https://www.instagram.com/feelfy.app?stkn=MnN1MzN1b2h1Mjk0" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@feelfy.app?_r=1&amp;_t=ZN-99nyriHXMve" target="_blank" rel="noopener">TikTok</a>
       </div>
+      <div id="footer-copy">© 2026 Feelfy, MB · Vilnius, Lithuania · Agis</div>
     </div>
   </footer>
 
@@ -2518,7 +2552,7 @@
               { q: 'How do I get paid?', a: 'Your earnings build up in your balance, and you withdraw them to your bank account whenever you like. Payments are handled securely by Stripe, and your dashboard shows your requests, sessions, reviews and monthly income.' }
             ]
           },
-          footerCopy: '© 2026 Feelfy, MB · Vilnius, Lithuania',
+          footerCopy: '© 2026 Feelfy, MB · Vilnius, Lithuania · Agis',
           privacyLabel: 'Privacy Policy',
           formPrivacyPre: 'By signing up, you agree to our ',
           privacyHref: '/privacy#en'
@@ -2696,7 +2730,7 @@
               { q: 'Kaip ir kada gaunu pinigus?', a: 'Uždarbis kaupiasi tavo balanse, o į banko sąskaitą jį išsiimi kada panorėjęs. Mokėjimus saugiai tvarko Stripe, o skydelyje matai užklausas, sesijas, atsiliepimus ir mėnesio pajamas.' }
             ]
           },
-          footerCopy: '© 2026 Feelfy, MB · Vilnius, Lietuva',
+          footerCopy: '© 2026 Feelfy, MB · Vilnius, Lietuva · Agis',
           privacyLabel: 'Privatumo politika',
           formPrivacyPre: 'Registruodamasis sutinki su mūsų ',
           privacyHref: '/privacy#lt'
