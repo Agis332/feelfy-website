@@ -5,6 +5,20 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
+# Main landing page and privacy page: scoped individually (not under /*) so
+# /session-report keeps its own stricter, single Content-Security-Policy header.
+/
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://kskjnigieybpzmvakblm.supabase.co; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
+/index.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://kskjnigieybpzmvakblm.supabase.co; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
+/privacy
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
+/privacy.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+
 # The session-report decision page (SportMatch PLAN.md B53 step 5b): its own
 # script only, calls only to the decide-session-report function, never cached,
 # indexed or framed, and no Referer. A header set again here is joined to the

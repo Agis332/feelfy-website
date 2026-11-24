@@ -9,3 +9,5 @@ supabase/
 .DS_Store
 .wrangler/
 index-v*.html
+image-slot.js
+support.js
