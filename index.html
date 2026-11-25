@@ -650,7 +650,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1400px;
       cursor: grab;
     }
 
@@ -664,12 +663,27 @@
       }
     }
 
+    .ring-persp {
+      position: relative;
+      perspective: 1100px;
+      -webkit-perspective: 1100px;
+      perspective-origin: 50% 50%;
+      -webkit-perspective-origin: 50% 50%;
+    }
+
+    @media (min-width: 1024px) {
+      .ring-persp {
+        perspective: 1200px;
+        -webkit-perspective: 1200px;
+      }
+    }
+
     .phone-tilt {
       position: relative;
       width: 204px;
       height: 416px;
       transform-style: preserve-3d;
-      will-change: transform;
+      -webkit-transform-style: preserve-3d;
     }
 
     @media (min-width: 1024px) {
@@ -683,7 +697,7 @@
       position: absolute;
       inset: 0;
       transform-style: preserve-3d;
-      will-change: transform;
+      -webkit-transform-style: preserve-3d;
     }
 
     .phone-slide {
@@ -694,6 +708,8 @@
       border: 1px solid rgba(255, 255, 255, 0.24);
       box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(255, 255, 255, 0.32);
       padding: 8px;
+      outline: 1px solid transparent;
+      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
 
@@ -728,7 +744,7 @@
     /* Floating Glass Side Tags (Dynamic Per Screen) */
     .side-tag {
       position: absolute;
-      z-index: 9;
+      z-index: 120;
       display: inline-flex;
       align-items: center;
       gap: 7px;
@@ -791,7 +807,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 10;
+      z-index: 130;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -891,6 +907,13 @@
     .dot-btn[aria-current="true"]::after {
       width: 24px;
       background: var(--blue-glow);
+    }
+
+    .ring-disclaimer {
+      margin: 2px 0 0;
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.52);
     }
 
     /* Electric Blue Kinetic Ribbon (v4 Signature) */
@@ -1979,8 +2002,10 @@
             </div>
 
             <button type="button" class="ring-nav ring-prev" id="prev-btn" aria-label="Previous screen">‹</button>
-            <div class="phone-tilt" id="phone-tilt">
-              <div class="phone-ring" id="phone-ring"></div>
+            <div class="ring-persp">
+              <div class="phone-tilt" id="phone-tilt">
+                <div class="phone-ring" id="phone-ring"></div>
+              </div>
             </div>
             <button type="button" class="ring-nav ring-next" id="next-btn" aria-label="Next screen">›</button>
 
@@ -1997,6 +2022,7 @@
             </div>
             <p class="ring-desc" id="ring-desc">Filter by sport, city and session type, with clear prices.</p>
             <div class="ring-dots" id="ring-dots" role="tablist" aria-label="Select app screen"></div>
+            <p class="ring-disclaimer" data-t="previewDisclaimer">App screens are a preview — the final app may look different.</p>
           </div>
         </div>
       </div>
@@ -2401,6 +2427,7 @@
           heroCta: 'Get early access',
           heroSecondary: 'How it works',
           previewLabel: 'App preview',
+          previewDisclaimer: 'App screens are a preview — the final app may look different.',
           modeAthlete: 'Athlete',
           modeTrainer: 'Trainer',
           prevAria: 'Previous screen',
@@ -2579,6 +2606,7 @@
           heroCta: 'Gauti ankstyvą prieigą',
           heroSecondary: 'Kaip veikia',
           previewLabel: 'Programėlės vaizdas',
+          previewDisclaimer: 'Ekrano vaizdai yra peržiūra — galutinė programėlė gali skirtis.',
           modeAthlete: 'Sportininkas',
           modeTrainer: 'Treneris',
           prevAria: 'Ankstesnis ekranas',
@@ -2810,16 +2838,16 @@
 
       function layoutRingFrame() {
         var narrow = window.innerWidth < 1024;
-        var rx = narrow ? 206 : 236;
-        var rz = narrow ? 460 : 520;
+        var rx = narrow ? 220 : 248;
+        var rz = narrow ? 800 : 860;
         var children = phoneRingEl.children;
         var n = children.length || 6;
 
-        tiltCur.x += (tiltTarget.x - tiltCur.x) * 0.1;
-        tiltCur.y += (tiltTarget.y - tiltCur.y) * 0.1;
+        tiltCur.x += (tiltTarget.x - tiltCur.x) * 0.09;
+        tiltCur.y += (tiltTarget.y - tiltCur.y) * 0.09;
         phoneTiltEl.style.transform = 'rotateY(' + tiltCur.y.toFixed(2) + 'deg) rotateX(' + tiltCur.x.toFixed(2) + 'deg)';
 
-        state.pos += (state.turns - state.pos) * 0.1;
+        state.pos += (state.turns - state.pos) * 0.08;
 
         for (var k = 0; k < children.length; k++) {
           var el = children[k];
@@ -2828,11 +2856,11 @@
           var z = rz * (Math.cos(a) - 1);
           var front = (1 + Math.cos(a)) / 2;
           el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,' + z.toFixed(1) + 'px) rotateY(' + (a * 180 / Math.PI).toFixed(2) + 'deg)';
-          var vis = front > 0.44;
-          el.style.opacity = vis ? (0.32 + 0.68 * Math.pow(front, 3)).toFixed(3) : '0';
+          var vis = front > 0.45;
+          el.style.opacity = vis ? (0.28 + 0.72 * Math.pow(front, 3)).toFixed(3) : '0';
           el.style.visibility = vis ? 'visible' : 'hidden';
           el.style.zIndex = String(Math.round(front * 100));
-          el.style.pointerEvents = front > 0.98 ? 'auto' : 'none';
+          el.style.pointerEvents = front > 0.995 ? 'auto' : 'none';
         }
       }
 
