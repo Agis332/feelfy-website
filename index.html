@@ -1992,7 +1992,7 @@
 
           <div class="ring-caption">
             <div class="ring-step-row">
-              <span class="ring-step-badge" id="ring-step-badge">01 / 06</span>
+              <span class="ring-step-badge" id="ring-step-badge">1/6</span>
               <h2 class="ring-title" id="ring-title">Trainer search</h2>
             </div>
             <p class="ring-desc" id="ring-desc">Filter by sport, city and session type, with clear prices.</p>
@@ -2266,7 +2266,7 @@
       var SCREENS = {
         athlete: [
           {
-            src: 'uploads/Screenshot_20260917_140412_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260917_140412_Feelfy.jpg?v=2',
             title: { en: 'Trainer search', lt: 'Trenerių paieška' },
             desc: { en: 'Filter by sport, city and session type, with clear prices.', lt: 'Filtruoji pagal sporto šaką, miestą ir treniruotės tipą, kainas matai iš karto.' },
             tags: {
@@ -2275,7 +2275,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260917_133047_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260917_133047_Feelfy.jpg?v=2',
             title: { en: 'Trainers on the map', lt: 'Žemėlapis' },
             desc: { en: 'See on the map where trainers hold their sessions.', lt: 'Matai žemėlapyje, kur treneriai veda treniruotes.' },
             tags: {
@@ -2284,7 +2284,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260917_133413_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260917_133413_Feelfy.jpg?v=2',
             title: { en: 'Trainer profile', lt: 'Trenerio profilis' },
             desc: { en: 'Check qualifications, specializations, reviews and book directly.', lt: 'Matyk kvalifikaciją, specializacijas, atsiliepimus ir registruokis.' },
             tags: {
@@ -2293,7 +2293,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_121156_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_121156_Feelfy.jpg?v=2',
             title: { en: 'Real-time calendar', lt: 'Kalendorius' },
             desc: { en: "Pick an open time slot straight from your trainer's live schedule.", lt: 'Pasirenki laisvą laiką tiesiai iš realaus trenerio grafiko.' },
             tags: {
@@ -2302,7 +2302,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_120619_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_120619_Feelfy.jpg?v=2',
             title: { en: 'Your bookings', lt: 'Rezervacijos' },
             desc: { en: 'Keep every upcoming session and status neatly tracked in one tab.', lt: 'Visos tavo būsimos treniruotės ir būsenos vienoje vietoje.' },
             tags: {
@@ -2311,7 +2311,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_115912_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_115912_Feelfy.jpg?v=2',
             title: { en: 'In-app messaging', lt: 'Susirašinėjimas' },
             desc: { en: 'Sort out workout details with your trainer right inside Feelfy.', lt: 'Susitari dėl detalių su treneriu tiesiog programėlėje.' },
             tags: {
@@ -2322,7 +2322,7 @@
         ],
         trainer: [
           {
-            src: 'uploads/Screenshot_20260917_143007_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260917_143007_Feelfy.jpg?v=2',
             title: { en: 'Trainer dashboard', lt: 'Trenerio skydelis' },
             desc: { en: 'Daily overview of sessions, earnings, rating and quick actions.', lt: 'Dienos apžvalga: sesijos, uždarbis, reitingas ir greiti veiksmai.' },
             tags: {
@@ -2331,7 +2331,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_151113_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_151113_Feelfy.jpg?v=2',
             title: { en: 'Earnings & payouts', lt: 'Uždarbis ir išmokos' },
             desc: { en: 'Available withdrawal balance, monthly chart and transaction log.', lt: 'Išmokoms paruošta suma, mėnesių grafikas ir operacijų istorija.' },
             tags: {
@@ -2340,7 +2340,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_145728_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_145728_Feelfy.jpg?v=2',
             title: { en: 'Schedule & calendar', lt: 'Kalendorius' },
             desc: { en: 'Monthly overview with active coaching days and open time slots.', lt: 'Mėnesio vaizdas su pažymėtomis dienomis ir laisvais laikais.' },
             tags: {
@@ -2349,7 +2349,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_145647_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_145647_Feelfy.jpg?v=2',
             title: { en: 'Sessions', lt: 'Sesijos' },
             desc: { en: 'Manage new requests, upcoming sessions and client details cleanly.', lt: 'Tvarkyk naujas užklausas, būsimas sesijas ir klientų informaciją.' },
             tags: {
@@ -2358,7 +2358,7 @@
             }
           },
           {
-            src: 'uploads/Screenshot_20260916_151235_Feelfy.jpg',
+            src: 'uploads/Screenshot_20260916_151235_Feelfy.jpg?v=2',
             title: { en: 'Client reviews', lt: 'Atsiliepimai' },
             desc: { en: 'Overall rating breakdown and direct replies to your clients.', lt: 'Bendras reitingas, vertinimai ir atsakymai klientams.' },
             tags: {
@@ -2848,7 +2848,7 @@
         var idx = state.shot % list.length;
         var item = list[idx];
 
-        ringStepBadgeEl.textContent = '0' + (idx + 1) + ' / 0' + list.length;
+        ringStepBadgeEl.textContent = (idx + 1) + '/' + list.length;
         ringTitleEl.textContent = item.title[state.lang];
         ringDescEl.textContent = item.desc[state.lang];
 
