@@ -113,7 +113,7 @@
     .site-nav {
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 500;
       background: rgba(12, 25, 46, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -569,6 +569,8 @@
     /* Right Hero: Dark Glowing Stage + Rotating 3D Phone Ring + Floating Side Tags */
     .ring-panel {
       position: relative;
+      z-index: 1;
+      isolation: isolate;
       border-radius: 30px;
       background: rgba(19, 37, 66, 0.62);
       border: 1px solid rgba(255, 255, 255, 0.13);
@@ -811,9 +813,11 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      background: rgba(12, 25, 46, 0.72);
-      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(12, 25, 46, 0.34);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: rgba(255, 255, 255, 0.85);
       font-family: var(--font-display);
       font-size: 22px;
       line-height: 1;
@@ -821,12 +825,13 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.16s ease, border-color 0.16s ease;
+      transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
     }
 
     .ring-nav:hover {
-      background: var(--blue);
-      border-color: var(--blue);
+      background: rgba(27, 124, 246, 0.85);
+      border-color: rgba(27, 124, 246, 0.9);
+      color: #ffffff;
     }
 
     .ring-prev { left: 4px; }
