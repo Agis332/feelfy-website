@@ -3193,11 +3193,14 @@
       function scrollToJoin(targetRole) {
         setMenuOpen(false);
         if (targetRole) setRole(targetRole);
+        var isTouchOrMobile = window.innerWidth < 920 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
         var el = document.getElementById('waitlist');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(function () {
-          if (!state.submitted && emailInput) emailInput.focus({ preventScroll: true });
-        }, 350);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: isTouchOrMobile ? 'start' : 'center' });
+        if (!isTouchOrMobile) {
+          setTimeout(function () {
+            if (!state.submitted && emailInput) emailInput.focus({ preventScroll: true });
+          }, 350);
+        }
       }
 
       function applyLanguage(nextLang) {
